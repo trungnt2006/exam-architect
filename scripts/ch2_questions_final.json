@@ -1,0 +1,961 @@
+{
+  "meta": {
+    "subject": "KHO DỮ LIỆU VÀ HỆ HỖ TRỢ RA QUYẾT ĐỊNH (ITS325)",
+    "chapter": 2,
+    "subtitle": "ÔN TẬP CHƯƠNG 2 - DỰ ÁN KHO DỮ LIỆU VÀ VÒNG ĐỜI PHÁT TRIỂN | 50 CÂU",
+    "source": "Slide Chương 2 (HUB) - Kimball Lifecycle Toolkit",
+    "answer_key": "CDDCDACCABDDAACDBACBABBABCBADCBDBBCDCABDBCAACCADAD"
+  },
+  "questions": [
+    {
+      "question": "Bản chất của một dự án kho dữ liệu theo góc nhìn quản trị dự án là gì?",
+      "options": {
+        "A": "Một dự án nâng cấp hạ tầng máy chủ nhằm tăng tốc hệ thống tác nghiệp hiện hữu.",
+        "B": "Một dự án gia công phần mềm thuần túy do phòng công nghệ thông tin độc lập thực hiện.",
+        "C": "Một nỗ lực hợp tác đa ngành giữa kinh doanh, đội ngũ IT và kiến trúc sư dữ liệu.",
+        "D": "Một dự án mua sắm công cụ báo cáo nhằm thay thế các bảng tính Excel thủ công."
+      },
+      "ans": "C",
+      "explanation": "Dự án kho dữ liệu là nỗ lực hợp tác đa ngành, không thuần túy là dự án IT. Nếu thiếu tiếng nói của người dùng kinh doanh thì hệ thống chỉ còn là một bài tập kỹ thuật vô ích.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.1",
+        "confidence": 0.98
+      },
+      "bloom_level": "understand",
+      "trap_type": "narrow_definition"
+    },
+    {
+      "question": "Mục tiêu tối hậu của một dự án kho dữ liệu là gì?",
+      "options": {
+        "A": "Thay thế báo cáo tĩnh bằng bảng điều khiển cập nhật liên tục theo thời gian thực.",
+        "B": "Hợp nhất các hệ thống tác nghiệp thành một cơ sở dữ liệu giao dịch duy nhất.",
+        "C": "Tự động hóa các bước xử lý giao dịch tại quầy để giảm thời gian chờ khách hàng.",
+        "D": "Chuyển dữ liệu thô thành thông tin có thể hành động nhằm hỗ trợ ra quyết định."
+      },
+      "ans": "D",
+      "explanation": "Mục tiêu là tạo ra thông tin có thể hành động (actionable information). Hợp nhất nguồn dữ liệu hay dựng dashboard chỉ là phương tiện, không phải đích đến của dự án.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.1.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "means_vs_end"
+    },
+    {
+      "question": "Theo cách tiếp cận Top-down, yêu cầu cho kho dữ liệu được xác định theo trình tự nào?",
+      "options": {
+        "A": "Xác định yêu cầu dựa trên cấu trúc dữ liệu hiện có trong các cơ sở dữ liệu tác nghiệp.",
+        "B": "Xác định yêu cầu của từng bộ phận nghiệp vụ trước, rồi mới tổng hợp lên cấp doanh nghiệp.",
+        "C": "Xác định yêu cầu dựa trên danh mục báo cáo sẵn có của nhà cung cấp công cụ BI.",
+        "D": "Xác định yêu cầu của các cấp quản lý cao nhất trước, rồi mới triển khai xuống bộ phận."
+      },
+      "ans": "D",
+      "explanation": "Top-down bắt đầu từ yêu cầu của cấp quản lý cao nhất rồi mới lan xuống các bộ phận; bottom-up làm ngược lại, bắt đầu từ nghiệp vụ ở từng phòng ban.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1",
+        "confidence": 0.95
+      },
+      "bloom_level": "understand",
+      "trap_type": "dichotomy"
+    },
+    {
+      "question": "Vì sao kho dữ liệu được xem là nguồn sự thật duy nhất của doanh nghiệp?",
+      "options": {
+        "A": "Vì kho dữ liệu cho phép nhân viên ghi và sửa trực tiếp số liệu báo cáo khi cần thiết.",
+        "B": "Vì kho dữ liệu lưu giữ nguyên bản mọi tệp nhật ký thô phát sinh trên máy chủ nguồn.",
+        "C": "Vì kho dữ liệu chuẩn hóa dữ liệu từ nhiều nguồn về một quy ước chung đã thống nhất.",
+        "D": "Vì kho dữ liệu tự động phát hiện và sửa lỗi nhập liệu phát sinh tại quầy giao dịch."
+      },
+      "ans": "C",
+      "explanation": "Kho dữ liệu tích hợp và đồng nhất dữ liệu từ nhiều nguồn, nhờ đó các cuộc họp không còn mất thời gian tranh cãi con số nào là đúng.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.1.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "half_truth"
+    },
+    {
+      "question": "Khi xác định phạm vi cho dự án kho dữ liệu đầu tiên, thực hành nào được khuyến nghị?",
+      "options": {
+        "A": "Kéo dài khảo sát cho đến khi thu thập đủ toàn bộ mong muốn của mọi người dùng.",
+        "B": "Bao phủ toàn bộ quy trình của mọi phòng ban ngay từ phiên bản đầu để tránh làm lại.",
+        "C": "Chỉ phục vụ ban lãnh đạo cấp cao vì đây là nhóm duy nhất có quyền ra quyết định.",
+        "D": "Bắt đầu ở quy mô nhỏ, tập trung một yêu cầu nghiệp vụ và đặt chỉ số đánh giá thành công."
+      },
+      "ans": "D",
+      "explanation": "Phạm vi nên nhỏ, tập trung một yêu cầu nghiệp vụ cụ thể, giới hạn số người dùng và có chỉ số thành công rõ ràng. Triển khai dàn trải toàn doanh nghiệp ngay từ đầu là nguyên nhân thất bại phổ biến.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "apply",
+      "trap_type": "overreach"
+    },
+    {
+      "question": "Ai là người có thẩm quyền quyết định phạm vi của dự án kho dữ liệu?",
+      "options": {
+        "A": "Ban quản lý của tổ chức, thông qua việc phê duyệt mục tiêu và giới hạn phạm vi.",
+        "B": "Kiến trúc sư dữ liệu, thông qua việc lựa chọn mô hình đa chiều và độ hạt lưu trữ.",
+        "C": "Nhà cung cấp giải pháp, thông qua việc đề xuất gói sản phẩm và lộ trình triển khai.",
+        "D": "Kỹ sư ETL, thông qua việc xác định số lượng nguồn dữ liệu cần trích xuất mỗi đêm."
+      },
+      "ans": "A",
+      "explanation": "Việc xác định dự án và phạm vi phụ thuộc nhiều nhất vào ban quản lý tổ chức; đội kỹ thuật chỉ hiện thực hóa phạm vi đã được phê duyệt.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2.2",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "role_confusion"
+    },
+    {
+      "question": "Yếu tố sẵn sàng nào được đánh giá là quan trọng nhất trước khi khởi động dự án kho dữ liệu?",
+      "options": {
+        "A": "Năng lực xử lý song song của máy chủ cơ sở dữ liệu dự kiến đầu tư.",
+        "B": "Số lượng giấy phép công cụ phân tích mà doanh nghiệp đang sở hữu.",
+        "C": "Sự ủng hộ mạnh mẽ của nhà tài trợ cấp điều hành trong tổ chức.",
+        "D": "Kinh nghiệm triển khai của đơn vị tư vấn tích hợp hệ thống bên ngoài."
+      },
+      "ans": "C",
+      "explanation": "Sự ủng hộ của lãnh đạo là yếu tố sẵn sàng quan trọng nhất vì nó quyết định ngân sách, quyền ưu tiên nguồn lực và khả năng vượt qua rào cản nội bộ.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.98
+      },
+      "bloom_level": "remember",
+      "trap_type": "priority_swap"
+    },
+    {
+      "question": "Nhà tài trợ dự án (Executive Sponsor) lý tưởng cần hội đủ những phẩm chất nào?",
+      "options": {
+        "A": "Có chuyên môn kế toán vững vàng để kiểm tra tính chính xác của từng con số.",
+        "B": "Am hiểu sâu về lập trình ETL và trực tiếp viết các gói xử lý dữ liệu hằng đêm.",
+        "C": "Có tầm nhìn, uy tín chính trị để thuyết phục đồng nghiệp và ngân sách duy trì dự án.",
+        "D": "Có khả năng đàm phán giá với nhà cung cấp phần cứng và quản lý hợp đồng mua sắm."
+      },
+      "ans": "C",
+      "explanation": "Sponsor lý tưởng là người có tầm nhìn, đủ uy tín chính trị và nắm ngân sách để duy trì dự án. Chuyên môn kỹ thuật chi tiết không phải tiêu chí bắt buộc của vai trò này.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "role_confusion"
+    },
+    {
+      "question": "Tình huống nào thể hiện rõ nhất một động lực kinh doanh cấp thiết?",
+      "options": {
+        "A": "Sau sáp nhập, doanh nghiệp không thể lập báo cáo doanh thu hợp nhất cho cổ đông.",
+        "B": "Doanh nghiệp muốn thử công nghệ mới vì đối thủ vừa công bố nền tảng tương tự.",
+        "C": "Phòng IT đề xuất nâng cấp máy chủ vì hệ điều hành đã hết thời gian hỗ trợ.",
+        "D": "Ban giám đốc yêu cầu chuẩn hóa định dạng báo cáo theo mẫu trình bày năm trước."
+      },
+      "ans": "A",
+      "explanation": "Động lực cấp thiết là bài toán kinh doanh gây đau đầu hoặc có giá trị lớn, ví dụ không thể báo cáo hợp nhất sau sáp nhập. Thay công nghệ hay đổi mẫu trình bày chưa tạo ra sức ép đó.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.97
+      },
+      "bloom_level": "understand",
+      "trap_type": "case_application"
+    },
+    {
+      "question": "Trong ba khía cạnh của tính khả thi, khía cạnh nào thường quyết định sự sống còn của dự án?",
+      "options": {
+        "A": "Tính khả thi về tài chính, tức tổng ngân sách được phê duyệt cho ba năm triển khai.",
+        "B": "Tính khả thi về dữ liệu, tức độ sạch và độ chi tiết của dữ liệu nguồn hiện có.",
+        "C": "Tính khả thi về nhân sự, tức số kỹ sư dữ liệu được điều động tham gia dự án.",
+        "D": "Tính khả thi về pháp lý, tức mức độ tuân thủ quy định bảo vệ dữ liệu cá nhân."
+      },
+      "ans": "B",
+      "explanation": "Khả thi về dữ liệu là khía cạnh quan trọng nhất: nếu nguồn không tồn tại hoặc quá bẩn thì không công nghệ nào cứu được dự án.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.97
+      },
+      "bloom_level": "understand",
+      "trap_type": "priority_swap"
+    },
+    {
+      "question": "Dữ liệu nguồn bị lỗi font nghiêm trọng và thiếu 40% bản ghi giao dịch. Dự án đang hứng rủi ro lớn nhất ở yếu tố nào?",
+      "options": {
+        "A": "Khả thi về công nghệ, vì máy chủ không đáp ứng được khối lượng dữ liệu tăng thêm.",
+        "B": "Động lực kinh doanh, vì ban lãnh đạo sẽ không còn lý do để tài trợ cho dự án.",
+        "C": "Sự ủng hộ của lãnh đạo, vì nhà tài trợ sẽ rút lui khi thấy dữ liệu quá xấu.",
+        "D": "Khả thi về dữ liệu, vì nguồn không đủ sạch và đủ chi tiết để trả lời câu hỏi kinh doanh."
+      },
+      "ans": "D",
+      "explanation": "Đây là rủi ro về data feasibility - yếu tố được xem là kẻ phá bĩnh quen thuộc của các dự án kho dữ liệu. Vấn đề không nằm ở ngân sách hay năng lực máy chủ.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.96
+      },
+      "bloom_level": "apply",
+      "trap_type": "case_application"
+    },
+    {
+      "question": "Lưới ưu tiên (prioritization grid) dùng để chọn mục tiêu dự án dựa trên hai trục nào?",
+      "options": {
+        "A": "Mức độ phức tạp của mô hình đa chiều và số lượng bảng chiều cần dựng.",
+        "B": "Quy mô dữ liệu và tốc độ xử lý mà hạ tầng kỹ thuật có thể đáp ứng.",
+        "C": "Số lượng người dùng và mức ngân sách được phân bổ cho từng quý.",
+        "D": "Tác động kinh doanh và tính khả thi của từng ứng viên dự án."
+      },
+      "ans": "D",
+      "explanation": "Kimball đề xuất lưới ưu tiên theo Tác động kinh doanh (Business Impact) và Tính khả thi (Feasibility) để chọn dự án vừa đáng làm vừa làm được.",
+      "citation": {
+        "source": "Kimball Lifecycle - Prioritization grid (Slide Chương 2)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.95
+      },
+      "bloom_level": "remember",
+      "trap_type": "axis_swap"
+    },
+    {
+      "question": "Vì sao nên khởi động bằng một dự án thí điểm (pilot) thay vì triển khai toàn diện ngay?",
+      "options": {
+        "A": "Để kiểm chứng giá trị và giảm rủi ro trong phạm vi hẹp trước khi nhân rộng.",
+        "B": "Để tiết kiệm chi phí mua bản quyền công cụ BI cho toàn bộ người dùng cuối.",
+        "C": "Để trì hoãn việc phỏng vấn người dùng cho đến khi hệ thống đã vận hành.",
+        "D": "Để chứng minh năng lực kỹ thuật của nhà cung cấp trước khi ký hợp đồng."
+      },
+      "ans": "A",
+      "explanation": "Pilot giúp kiểm chứng giả định về dữ liệu, công nghệ và nhu cầu người dùng với chi phí thấp trước khi mở rộng ra toàn doanh nghiệp.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1",
+        "confidence": 0.94
+      },
+      "bloom_level": "understand",
+      "trap_type": "means_vs_end"
+    },
+    {
+      "question": "Điểm khác biệt cốt lõi giữa động lực kinh doanh và tính khả thi là gì?",
+      "options": {
+        "A": "Động lực trả lời vì sao phải làm, còn khả thi trả lời có làm được hay không.",
+        "B": "Động lực trả lời có làm được hay không, còn khả thi trả lời vì sao phải làm.",
+        "C": "Động lực do phòng IT đánh giá, còn khả thi do ban lãnh đạo phê duyệt.",
+        "D": "Động lực chỉ xét ngân sách, còn khả thi chỉ xét năng lực kỹ thuật."
+      },
+      "ans": "A",
+      "explanation": "Động lực kinh doanh tạo sức ép và sự cấp bách; tính khả thi xác nhận tổ chức có đủ dữ liệu, công nghệ và con người để thực hiện. Hai khái niệm bổ trợ chứ không thay thế nhau.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.1.2",
+        "confidence": 0.95
+      },
+      "bloom_level": "understand",
+      "trap_type": "dichotomy"
+    },
+    {
+      "question": "Ba nguyên tắc cốt lõi mà Vòng đời phát triển DW/BI của Kimball nhấn mạnh là gì?",
+      "options": {
+        "A": "Tối ưu phần cứng, nén dữ liệu và phân vùng theo tháng để giảm chi phí lưu trữ.",
+        "B": "Chuẩn hóa 3NF, xử lý giao dịch thời gian thực và tự động hóa hoàn toàn báo cáo.",
+        "C": "Tập trung nhu cầu kinh doanh, mô hình đa chiều và triển khai lặp lại có quản lý.",
+        "D": "Thuê ngoài toàn bộ, dùng công cụ đám mây và loại bỏ vai trò của người dùng."
+      },
+      "ans": "C",
+      "explanation": "Kimball nhấn mạnh ba nguyên tắc: lấy nhu cầu kinh doanh làm trọng tâm, trình bày dữ liệu theo mô hình đa chiều và triển khai theo hướng lặp lại, có thể quản lý được.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.2",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "inmon_kimball_swap"
+    },
+    {
+      "question": "Giai đoạn nào được xem là trái tim của vòng đời Kimball?",
+      "options": {
+        "A": "Xây dựng mô hình vật lý, vì nó quyết định tốc độ của các truy vấn phân tích.",
+        "B": "Thiết kế kiến trúc kỹ thuật, vì nó quyết định nền tảng phần cứng và phần mềm.",
+        "C": "Triển khai và bảo trì, vì nó quyết định tuổi thọ vận hành của hệ thống.",
+        "D": "Xác định yêu cầu nghiệp vụ, vì nó định hình dữ liệu cần lưu và cả ba luồng sau đó."
+      },
+      "ans": "D",
+      "explanation": "Phân tích yêu cầu nghiệp vụ là trái tim của vòng đời: nó không chỉ xác định dữ liệu cần lưu mà còn ảnh hưởng trực tiếp đến luồng công nghệ, dữ liệu và ứng dụng.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.98
+      },
+      "bloom_level": "understand",
+      "trap_type": "priority_swap"
+    },
+    {
+      "question": "Hoạt động nào sau đây KHÔNG thuộc giai đoạn lập kế hoạch và quản lý dự án?",
+      "options": {
+        "A": "Ước lượng và phân bổ nhân sự, ngân sách cho từng giai đoạn của vòng đời.",
+        "B": "Khảo sát chi tiết cấu trúc từng bảng nguồn để thiết kế ánh xạ trích xuất dữ liệu.",
+        "C": "Xây dựng kế hoạch truyền thông để các bên liên quan luôn được cập nhật.",
+        "D": "Nhận diện và lập phương án ứng phó các rủi ro có thể phát sinh khi triển khai."
+      },
+      "ans": "B",
+      "explanation": "Lập kế hoạch gồm hoạch định nguồn lực, quản lý phạm vi, quản lý rủi ro và kế hoạch truyền thông. Việc xem xét chi tiết nguồn dữ liệu thuộc giai đoạn phân tích và thiết kế dữ liệu sau đó.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "analyze_evaluate",
+      "trap_type": "negation_boundary"
+    },
+    {
+      "question": "Phát biểu nào đúng về mối quan hệ giữa hoạch định dự án và yêu cầu kinh doanh?",
+      "options": {
+        "A": "Hoạch định dự án phụ thuộc vào yêu cầu kinh doanh đã và đang được làm rõ.",
+        "B": "Hoạch định dự án độc lập hoàn toàn với yêu cầu kinh doanh của người dùng.",
+        "C": "Hoạch định dự án chỉ dựa trên năng lực kỹ thuật của đội ngũ triển khai.",
+        "D": "Hoạch định dự án chỉ dựa trên danh mục sản phẩm của nhà cung cấp đã chọn."
+      },
+      "ans": "A",
+      "explanation": "Hoạch định dự án phụ thuộc vào các yêu cầu kinh doanh, đồng thời tập trung vào nguồn lực và cấp độ kỹ năng của nhân sự tham gia.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "independence_myth"
+    },
+    {
+      "question": "Trong giai đoạn xác định yêu cầu nghiệp vụ, đội dự án cần phỏng vấn những ai?",
+      "options": {
+        "A": "Chỉ bộ phận IT, vì họ là đơn vị duy nhất hiểu rõ cấu trúc dữ liệu nguồn.",
+        "B": "Chỉ người dùng nghiệp vụ, vì bộ phận IT không nắm được nhu cầu phân tích.",
+        "C": "Cả người dùng nghiệp vụ để hiểu nhu cầu ra quyết định và bộ phận IT về nguồn dữ liệu.",
+        "D": "Chỉ ban lãnh đạo, vì khẩu vị báo cáo của cấp trên quyết định mọi yêu cầu."
+      },
+      "ans": "C",
+      "explanation": "Phải phỏng vấn cả hai phía: người dùng nghiệp vụ cho biết họ ra quyết định thế nào, còn bộ phận IT cho biết dữ liệu nguồn hiện có ra sao.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "one_sided"
+    },
+    {
+      "question": "Kết quả đầu ra trực tiếp của giai đoạn phân tích yêu cầu nghiệp vụ gồm những gì?",
+      "options": {
+        "A": "Mô hình dữ liệu vật lý, danh sách chỉ mục và kế hoạch phân vùng lưu trữ.",
+        "B": "Tài liệu yêu cầu nghiệp vụ, ma trận ghi vết và bản cập nhật kế hoạch dự án.",
+        "C": "Đặc tả dashboard, mẫu báo cáo và danh sách khối đa chiều cần xây dựng.",
+        "D": "Ma trận lựa chọn sản phẩm, hợp đồng nhà cung cấp và cấu hình máy chủ."
+      },
+      "ans": "B",
+      "explanation": "Ba đầu ra điển hình là tài liệu mô tả yêu cầu nghiệp vụ, ma trận ghi vết (traceability matrix) và kế hoạch dự án được cập nhật. Các phương án còn lại thuộc luồng dữ liệu, ứng dụng hoặc công nghệ.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "output_confusion"
+    },
+    {
+      "question": "Tài liệu nào KHÔNG phải là kết quả trực tiếp của giai đoạn phân tích yêu cầu nghiệp vụ?",
+      "options": {
+        "A": "Tài liệu thiết kế kiến trúc dữ liệu, vì việc này thuộc giai đoạn thiết kế sau đó.",
+        "B": "Tài liệu mô tả chi tiết các yêu cầu nghiệp vụ đã thu thập từ người dùng.",
+        "C": "Ma trận ghi vết nối yêu cầu nghiệp vụ với các thành phần sẽ triển khai.",
+        "D": "Bản kế hoạch dự án được điều chỉnh theo phát hiện mới từ phỏng vấn."
+      },
+      "ans": "A",
+      "explanation": "Kiến trúc dữ liệu được thiết kế ở giai đoạn sau. Phân tích yêu cầu chỉ tạo tài liệu yêu cầu, ma trận ghi vết và bản cập nhật kế hoạch dự án.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.96
+      },
+      "bloom_level": "analyze_evaluate",
+      "trap_type": "negation_boundary"
+    },
+    {
+      "question": "Vì sao giai đoạn phân tích yêu cầu nghiệp vụ được xem là ảnh hưởng then chốt đến toàn dự án?",
+      "options": {
+        "A": "Vì nó quyết định toàn bộ ngân sách và tiến độ của các giai đoạn còn lại.",
+        "B": "Vì nó cung cấp đầu vào cho cả ba luồng công nghệ, dữ liệu và ứng dụng.",
+        "C": "Vì nó thay thế luôn giai đoạn thiết kế kiến trúc kỹ thuật của dự án.",
+        "D": "Vì nó loại bỏ nhu cầu phải xây dựng mô hình dữ liệu đa chiều sau này."
+      },
+      "ans": "B",
+      "explanation": "Yêu cầu nghiệp vụ quyết định dữ liệu nào cần lưu, do đó ảnh hưởng trực tiếp đến cả ba luồng: công nghệ, dữ liệu và ứng dụng.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.97
+      },
+      "bloom_level": "understand",
+      "trap_type": "overreach"
+    },
+    {
+      "question": "Mục tiêu chính của giai đoạn thiết kế kiến trúc kỹ thuật là gì?",
+      "options": {
+        "A": "Thiết kế các bảng chiều và bảng sự kiện theo mô hình dữ liệu đa chiều.",
+        "B": "Tích hợp nhiều công nghệ khác nhau thành một hệ thống thống nhất để vận hành.",
+        "C": "Đặc tả mẫu báo cáo và dashboard phục vụ người dùng cuối khai thác dữ liệu.",
+        "D": "Xây dựng ma trận bus để xác định các chiều dùng chung giữa quy trình."
+      },
+      "ans": "B",
+      "explanation": "Thiết kế kiến trúc kỹ thuật thuộc luồng công nghệ, nhằm ghép phần cứng, DBMS, công cụ ETL và BI thành một hệ thống thống nhất.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.4",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "track_confusion"
+    },
+    {
+      "question": "Khi lựa chọn nền tảng và công cụ phân tích, đội dự án cần đánh giá những khía cạnh nào?",
+      "options": {
+        "A": "Cả yêu cầu kinh doanh lẫn các yếu tố kỹ thuật như phần cứng và DBMS.",
+        "B": "Chỉ giá bản quyền, vì mọi công cụ trên thị trường đều đáp ứng yêu cầu.",
+        "C": "Chỉ tốc độ xử lý, vì người dùng chỉ quan tâm thời gian chờ của báo cáo.",
+        "D": "Chỉ mức độ phổ biến của thương hiệu trên thị trường trong ba năm gần."
+      },
+      "ans": "A",
+      "explanation": "Việc chọn lựa phải đáp ứng cả hai khía cạnh: yêu cầu kinh doanh và các ràng buộc kỹ thuật (nền tảng phần cứng, DBMS, công cụ chuẩn bị và truy cập dữ liệu).",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.4.2",
+        "confidence": 0.95
+      },
+      "bloom_level": "understand",
+      "trap_type": "single_criterion"
+    },
+    {
+      "question": "Một công ty viễn thông quyết định chỉ phân tích nhóm khách hàng trả sau để giảm độ phức tạp. Đây là quyết định thuộc giai đoạn nào?",
+      "options": {
+        "A": "Phân tích yêu cầu nghiệp vụ, nhằm thu thập chỉ số về hành vi rời mạng.",
+        "B": "Xác định dự án và phạm vi, nhằm thu hẹp phạm vi vào một yêu cầu nghiệp vụ cụ thể.",
+        "C": "Thiết kế kiến trúc kỹ thuật, nhằm chọn hệ quản trị chịu tải dữ liệu lớn.",
+        "D": "Triển khai và bảo trì, nhằm giới hạn nhóm người dùng được cấp quyền."
+      },
+      "ans": "B",
+      "explanation": "Thu hẹp về khối trả sau là quyết định phạm vi: dự án nên bắt đầu ở quy mô nhỏ và tập trung vào một yêu cầu nghiệp vụ cụ thể.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) - Case study churn",
+        "chapter": 2,
+        "section": "2.2.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "apply",
+      "trap_type": "case_application"
+    },
+    {
+      "question": "Phát biểu nào đúng về cách Kimball Lifecycle được tổ chức và áp dụng?",
+      "options": {
+        "A": "Lộ trình cố định, mọi dự án đều phải thực hiện giống nhau ở mọi chi tiết.",
+        "B": "Lộ trình tuyến tính bắt buộc hoàn tất từng giai đoạn rồi mới sang giai đoạn kế.",
+        "C": "Lộ trình gồm các tác vụ có thể chạy đồng thời và điều chỉnh theo nhu cầu tổ chức.",
+        "D": "Lộ trình chỉ áp dụng cho doanh nghiệp có quy mô trên một nghìn nhân sự."
+      },
+      "ans": "C",
+      "explanation": "Lifecycle minh họa luồng tổng thể, chỉ ra thứ tự tác vụ và những hoạt động diễn ra đồng thời; lộ trình có thể chỉnh sửa cho phù hợp và không phải mọi chi tiết đều được thực hiện trong mỗi dự án.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2",
+        "confidence": 0.97
+      },
+      "bloom_level": "apply",
+      "trap_type": "rigid_process_myth"
+    },
+    {
+      "question": "Việc xây dựng bảng chiều, bảng sự kiện và ma trận bus thuộc luồng công việc nào?",
+      "options": {
+        "A": "Luồng công nghệ, nơi hạ tầng phần cứng được thiết kế và lắp đặt.",
+        "B": "Luồng dữ liệu, nơi yêu cầu nghiệp vụ được cụ thể hóa thành cấu trúc lưu trữ.",
+        "C": "Luồng ứng dụng, nơi báo cáo và dashboard được đặc tả để phát triển.",
+        "D": "Luồng triển khai, nơi hệ thống được bàn giao cho người dùng cuối."
+      },
+      "ans": "B",
+      "explanation": "Mô hình đa chiều là hoạt động cốt lõi của luồng dữ liệu: liệt kê data mart, thiết kế bảng chiều, bảng sự kiện và ma trận bus.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.98
+      },
+      "bloom_level": "understand",
+      "trap_type": "track_confusion"
+    },
+    {
+      "question": "Hoạt động nào sau đây thuộc luồng công nghệ (Technology Track)?",
+      "options": {
+        "A": "Đánh giá nền tảng phần cứng và chọn lựa, cài đặt DBMS cùng công cụ ETL.",
+        "B": "Xác định độ hạt của bảng sự kiện và liệt kê danh sách bảng chiều.",
+        "C": "Đặc tả mẫu báo cáo và xây dựng dashboard doanh thu theo vùng.",
+        "D": "Phỏng vấn người dùng để hiểu cách họ ra quyết định kinh doanh."
+      },
+      "ans": "A",
+      "explanation": "Luồng công nghệ gồm thiết kế kiến trúc kỹ thuật và chọn lựa, cài đặt các sản phẩm: phần cứng, DBMS, công cụ ETL và công cụ BI.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.4",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "track_confusion"
+    },
+    {
+      "question": "Hoạt động nào sau đây thuộc luồng ứng dụng (Application Track)?",
+      "options": {
+        "A": "Chọn hệ quản trị cơ sở dữ liệu có khả năng xử lý song song.",
+        "B": "Xây dựng quy trình trích xuất, biến đổi và nạp dữ liệu vào bảng chiều.",
+        "C": "Thiết kế chỉ mục và phân vùng cho bảng sự kiện trên ổ đĩa vật lý.",
+        "D": "Đặc tả và phát triển dashboard, báo cáo định sẵn và truy vấn ad-hoc."
+      },
+      "ans": "D",
+      "explanation": "Luồng ứng dụng là mặt tiền của hệ thống: đặc tả và xây dựng báo cáo, dashboard, truy vấn tùy biến và khối OLAP cho người dùng cuối.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.6",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "track_confusion"
+    },
+    {
+      "question": "Ba luồng công nghệ, dữ liệu, ứng dụng bắt đầu chạy song song từ thời điểm nào?",
+      "options": {
+        "A": "Sau khi hệ thống đã được bàn giao và đi vào giai đoạn bảo trì.",
+        "B": "Trước khi lập kế hoạch dự án và xác định phạm vi triển khai.",
+        "C": "Sau khi hoàn thành phân tích yêu cầu nghiệp vụ của người dùng.",
+        "D": "Ngay từ bước đánh giá sự sẵn sàng của tổ chức và dữ liệu."
+      },
+      "ans": "C",
+      "explanation": "Sau giai đoạn phân tích yêu cầu, dự án tách thành ba luồng chạy song song: công nghệ, dữ liệu và ứng dụng.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.97
+      },
+      "bloom_level": "apply",
+      "trap_type": "sequence_swap"
+    },
+    {
+      "question": "Nhóm công việc nào thuộc bước xây dựng mô hình dữ liệu đa chiều trong luồng dữ liệu?",
+      "options": {
+        "A": "Tạo chỉ mục, phân vùng và cấu hình tham số lưu trữ cho bảng sự kiện.",
+        "B": "Liệt kê các data mart, danh sách bảng chiều và ma trận bus giữa quy trình.",
+        "C": "Đặc tả mẫu báo cáo và yêu cầu tính toán cho từng dashboard.",
+        "D": "Cài đặt công cụ ETL và kiểm thử kết nối tới các nguồn dữ liệu."
+      },
+      "ans": "B",
+      "explanation": "Xây dựng mô hình đa chiều gồm: liệt kê data mart, liệt kê bảng chiều, xây dựng ma trận bus và xây dựng bảng sự kiện. Chỉ mục và phân vùng là bước thiết kế vật lý sau đó.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "sequence_swap"
+    },
+    {
+      "question": "Ma trận bus (bus matrix) trong luồng dữ liệu được dùng để làm gì?",
+      "options": {
+        "A": "Ghi nhận lỗi phát sinh trong quá trình trích xuất và biến đổi dữ liệu.",
+        "B": "Đo tốc độ truyền dữ liệu giữa máy chủ nguồn và máy chủ kho dữ liệu.",
+        "C": "Phân bổ dung lượng lưu trữ cho từng phân vùng theo tháng phát sinh.",
+        "D": "Xác định các chiều dùng chung giữa nhiều quy trình nghiệp vụ trong kho dữ liệu."
+      },
+      "ans": "D",
+      "explanation": "Ma trận bus là điểm giao nhau giữa quy trình nghiệp vụ và các chiều, giúp nhận diện chiều dùng chung (conformed dimension) để giữ tính nhất quán cho toàn kho dữ liệu.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "function_swap"
+    },
+    {
+      "question": "Vùng dữ liệu tạm (data staging area) trong luồng dữ liệu có vai trò gì?",
+      "options": {
+        "A": "Là nơi lưu trữ lâu dài dữ liệu lịch sử để người dùng truy vấn trực tiếp.",
+        "B": "Là nơi trung gian tiếp nhận, làm sạch và chuẩn bị dữ liệu trước khi nạp vào kho.",
+        "C": "Là nơi chứa các khối OLAP phục vụ phân tích đa chiều cho người dùng cuối.",
+        "D": "Là nơi sao lưu dự phòng dữ liệu kho phục vụ khôi phục khi có sự cố."
+      },
+      "ans": "B",
+      "explanation": "Data staging là vùng tạm để trích xuất, biến đổi và chuẩn bị dữ liệu. Khối OLAP thuộc luồng ứng dụng, còn sao lưu là công việc vận hành hệ thống.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.3",
+        "confidence": 0.95
+      },
+      "bloom_level": "understand",
+      "trap_type": "function_swap"
+    },
+    {
+      "question": "Nhiệm vụ nào thuộc thiết kế vật lý (Physical Design) của luồng dữ liệu?",
+      "options": {
+        "A": "Xác định quy trình nghiệp vụ và độ hạt chi tiết của bảng sự kiện.",
+        "B": "Thiết kế chỉ mục, phân vùng và cách tổ chức bảng trên thiết bị lưu trữ.",
+        "C": "Lựa chọn quy trình nghiệp vụ nào sẽ được mô hình hóa trước tiên.",
+        "D": "Đặc tả tiêu chuẩn ứng dụng và mẫu báo cáo cho người dùng cuối."
+      },
+      "ans": "B",
+      "explanation": "Thiết kế vật lý chuyển mô hình logic thành cấu trúc thực tế trong DBMS: bảng, chỉ mục, phân vùng nhằm tối ưu lưu trữ và truy vấn.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.2",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "logical_physical_swap"
+    },
+    {
+      "question": "Vì sao thiết kế và phát triển ETL được xem là gắn liền với luồng dữ liệu?",
+      "options": {
+        "A": "Vì ETL chịu trách nhiệm lựa chọn phần cứng và cài đặt hệ quản trị dữ liệu.",
+        "B": "Vì ETL là công cụ duy nhất dùng để tạo dashboard cho người dùng cuối.",
+        "C": "Vì ETL quyết định cách dữ liệu được nạp vào bảng chiều và bảng sự kiện đã thiết kế.",
+        "D": "Vì ETL thay thế hoàn toàn giai đoạn thiết kế mô hình đa chiều của dự án."
+      },
+      "ans": "C",
+      "explanation": "ETL là quy trình kỹ thuật nhưng gắn với luồng dữ liệu vì nó hiện thực hóa việc trích xuất từ nguồn và nạp vào các bảng đã thiết kế.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.3",
+        "confidence": 0.96
+      },
+      "bloom_level": "understand",
+      "trap_type": "track_confusion"
+    },
+    {
+      "question": "Mục đích của đặc tả ứng dụng người dùng cuối trong luồng ứng dụng là gì?",
+      "options": {
+        "A": "Lập lịch chạy các gói trích xuất và nạp dữ liệu vào mỗi buổi tối.",
+        "B": "Xác định cấu trúc bảng, khóa chính và quan hệ giữa các bảng dữ liệu.",
+        "C": "Ấn định cấu hình phần cứng tối thiểu cho máy chủ cơ sở dữ liệu.",
+        "D": "Bảo đảm nhóm phát triển và người dùng hiểu giống nhau về ứng dụng sẽ nhận."
+      },
+      "ans": "D",
+      "explanation": "Đặc tả mô tả mẫu báo cáo, thông số hướng người dùng và yêu cầu tính toán, nhằm tránh hiểu lầm giữa đội phát triển và người dùng. Đặc tả áp dụng cho cả tập tiêu chuẩn ứng dụng chứ không chỉ một ứng dụng đơn lẻ.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.6.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "apply",
+      "trap_type": "purpose_swap"
+    },
+    {
+      "question": "Hoạt động nào sau đây KHÔNG thuộc luồng dữ liệu (Data Track)?",
+      "options": {
+        "A": "Thiết kế mô hình vật lý gồm chỉ mục và phân vùng cho bảng sự kiện.",
+        "B": "Xây dựng mô hình đa chiều với bảng sự kiện và các bảng chiều.",
+        "C": "Đặc tả mẫu báo cáo và phát triển dashboard doanh thu theo từng vùng.",
+        "D": "Thiết kế và phát triển quy trình ETL nạp dữ liệu vào kho dữ liệu."
+      },
+      "ans": "C",
+      "explanation": "Báo cáo và dashboard thuộc luồng ứng dụng. Luồng dữ liệu chỉ gồm mô hình đa chiều, thiết kế vật lý và thiết kế, phát triển ETL.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5",
+        "confidence": 0.97
+      },
+      "bloom_level": "remember",
+      "trap_type": "negation_boundary"
+    },
+    {
+      "question": "Một nhóm chọn quy trình bán hàng, khai báo độ hạt theo từng dòng hóa đơn và liệt kê các chiều liên quan. Công việc này thuộc luồng nào?",
+      "options": {
+        "A": "Luồng dữ liệu, vì đây là các bước của quy trình thiết kế mô hình đa chiều.",
+        "B": "Luồng công nghệ, vì cần chọn công cụ trước khi mô hình hóa dữ liệu.",
+        "C": "Luồng ứng dụng, vì độ hạt quyết định cách hiển thị báo cáo cho người dùng.",
+        "D": "Giai đoạn triển khai, vì mô hình chỉ được chốt sau khi hệ thống vận hành."
+      },
+      "ans": "A",
+      "explanation": "Chọn quy trình, khai báo độ hạt, xác định chiều rồi xác định sự kiện là bốn bước thiết kế mô hình đa chiều - hoạt động cốt lõi của luồng dữ liệu.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) - Case study",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "apply",
+      "trap_type": "case_application"
+    },
+    {
+      "question": "Ba luồng chạy song song nhưng vẫn phải phối hợp chặt chẽ. Vì sao?",
+      "options": {
+        "A": "Vì mỗi luồng đều do cùng một nhà cung cấp phần mềm trực tiếp đảm nhận.",
+        "B": "Vì đầu ra của luồng dữ liệu là điều kiện để ETL và báo cáo hoạt động đúng.",
+        "C": "Vì luồng ứng dụng phải hoàn thành trước khi thiết kế mô hình đa chiều.",
+        "D": "Vì luồng công nghệ quyết định nội dung nghiệp vụ của từng bảng chiều."
+      },
+      "ans": "B",
+      "explanation": "Mô hình đa chiều do luồng dữ liệu tạo ra là đầu vào cho ETL và cho báo cáo, dashboard. Các luồng chạy song song nhưng phải đồng bộ trên cùng một thiết kế.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.3",
+        "confidence": 0.95
+      },
+      "bloom_level": "analyze_evaluate",
+      "trap_type": "dependency_confusion"
+    },
+    {
+      "question": "Vì sao thiết kế kiến trúc kỹ thuật cần được xem xét ngay từ giai đoạn đầu của dự án?",
+      "options": {
+        "A": "Vì kiến trúc xác định danh sách khách hàng sẽ được đưa vào phân tích.",
+        "B": "Vì kiến trúc quyết định nội dung các chỉ số kinh doanh cần phân tích.",
+        "C": "Vì kiến trúc thay thế cho việc phỏng vấn người dùng về yêu cầu báo cáo.",
+        "D": "Vì kiến trúc ảnh hưởng đến khả năng mở rộng, hiệu năng và chi phí toàn hệ thống."
+      },
+      "ans": "D",
+      "explanation": "Kiến trúc đóng vai trò quan trọng trong xây dựng và phát triển dự án kho dữ liệu: nó quyết định năng lực kỹ thuật, khả năng mở rộng và chi phí vận hành lâu dài.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.5.2",
+        "confidence": 0.94
+      },
+      "bloom_level": "understand",
+      "trap_type": "role_confusion"
+    },
+    {
+      "question": "Trình tự đúng của bốn bước thiết kế mô hình dữ liệu đa chiều theo Kimball là gì?",
+      "options": {
+        "A": "Chọn quy trình nghiệp vụ, xác định các chiều, khai báo độ hạt, xác định sự kiện.",
+        "B": "Chọn quy trình nghiệp vụ, khai báo độ hạt, xác định các chiều, xác định sự kiện.",
+        "C": "Khai báo độ hạt, chọn quy trình nghiệp vụ, xác định sự kiện, xác định các chiều.",
+        "D": "Xác định các chiều, chọn quy trình nghiệp vụ, khai báo độ hạt, xác định sự kiện."
+      },
+      "ans": "B",
+      "explanation": "Bốn bước theo thứ tự: chọn quy trình nghiệp vụ, khai báo độ hạt, xác định các chiều, xác định sự kiện và độ đo. Đảo thứ tự sẽ khiến mô hình sai độ hạt.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB) / Kimball",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.98
+      },
+      "bloom_level": "remember",
+      "trap_type": "sequence_swap"
+    },
+    {
+      "question": "Trong bài toán churn rate của công ty viễn thông, độ hạt nào được chọn cho bảng sự kiện?",
+      "options": {
+        "A": "Mỗi cuộc gọi phát sinh, nhằm ghi nhận chi tiết từng tương tác của khách hàng.",
+        "B": "Mỗi thuê bao theo từng tháng, nhằm giảm mạnh khối lượng dữ liệu lưu trữ.",
+        "C": "Mỗi thuê bao theo từng ngày, cho phép theo dõi biến động chỉ số theo thời gian.",
+        "D": "Mỗi gói cước đang bán, nhằm so sánh hiệu quả của các chương trình khuyến mãi."
+      },
+      "ans": "C",
+      "explanation": "Độ hạt là ảnh chụp theo ngày cho từng thuê bao (daily snapshot per subscriber), đủ chi tiết để phân tích biến động chỉ số theo chuỗi thời gian.",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "apply",
+      "trap_type": "grain_confusion"
+    },
+    {
+      "question": "Vì sao chiều khách hàng trong bài toán churn sử dụng kỹ thuật SCD Loại 2?",
+      "options": {
+        "A": "Để lưu lại lịch sử khi khách hàng đổi gói cước hoặc đổi địa chỉ theo thời gian.",
+        "B": "Để giảm số bản ghi của bảng chiều bằng cách ghi đè giá trị cũ.",
+        "C": "Để tự động xóa các thuê bao đã rời mạng khỏi bảng chiều khách hàng.",
+        "D": "Để mã hóa thông tin khách hàng thành khóa thay thế dạng số nguyên."
+      },
+      "ans": "A",
+      "explanation": "SCD Loại 2 giữ nhiều phiên bản của cùng một khách hàng, nhờ đó phân tích chính xác hành vi tại từng thời điểm. Ghi đè giá trị cũ là SCD Loại 1.",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "apply",
+      "trap_type": "scd_swap"
+    },
+    {
+      "question": "Chiều nhập vai (role-playing dimension) được áp dụng khi nào?",
+      "options": {
+        "A": "Khi cùng một bảng chiều được dùng với nhiều vai trò trong một bảng sự kiện.",
+        "B": "Khi bảng sự kiện chỉ có duy nhất một chiều thời gian và một chiều khách hàng.",
+        "C": "Khi cần gộp nhiều bảng chiều nhỏ thành một bảng chiều duy nhất để tiết kiệm chỗ.",
+        "D": "Khi cần loại bỏ các chiều không tham gia vào bất kỳ quy trình nghiệp vụ nào."
+      },
+      "ans": "A",
+      "explanation": "Ví dụ theo dõi cả ngày kích hoạt thuê bao và ngày phát sinh sự kiện: cùng bảng Dim_Time nhưng xuất hiện với hai vai trò khác nhau trong một bảng sự kiện.",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "apply",
+      "trap_type": "dimension_confusion"
+    },
+    {
+      "question": "Bảng sự kiện chụp định kỳ (Periodic Snapshot) phù hợp nhất với mục đích nào?",
+      "options": {
+        "A": "Lưu danh mục sản phẩm và giá bán hiện hành của từng mặt hàng.",
+        "B": "Lưu từng giao dịch phát sinh ngay khi giao dịch đó vừa hoàn tất.",
+        "C": "Lưu trạng thái tích lũy của đối tượng tại các mốc thời gian đều đặn.",
+        "D": "Lưu lịch sử thay đổi thuộc tính của bảng chiều theo từng phiên bản."
+      },
+      "ans": "C",
+      "explanation": "Periodic snapshot ghi trạng thái tại cuối mỗi kỳ, ví dụ cuối mỗi ngày, thuận lợi khi so sánh hành vi giữa các tháng. Lưu từng giao dịch là transaction fact table.",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "fact_table_swap"
+    },
+    {
+      "question": "Chỉ số nào là độ đo KHÔNG cộng được (non-additive) trong bài toán churn?",
+      "options": {
+        "A": "Tổng số lần nạp thẻ thất bại của nhóm khách hàng trả sau.",
+        "B": "Tổng số lần gọi lên tổng đài của toàn bộ thuê bao trong kỳ.",
+        "C": "Tỷ lệ xác suất rời bỏ (churn score) được tính từ mô hình phân tích.",
+        "D": "Tổng doanh thu sử dụng dịch vụ của nhóm khách hàng trả sau."
+      },
+      "ans": "C",
+      "explanation": "Churn score là tỷ lệ nên không thể cộng dồn qua các kỳ hay các nhóm. Ba chỉ số còn lại là độ đo cộng được (additive).",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.97
+      },
+      "bloom_level": "understand",
+      "trap_type": "measure_type"
+    },
+    {
+      "question": "Vì sao không thể cộng dồn trực tiếp tỷ lệ rời bỏ của từng tháng để ra tỷ lệ của cả quý?",
+      "options": {
+        "A": "Vì tỷ lệ tính trên mẫu số khác nhau nên cộng dồn sẽ làm sai bản chất chỉ số.",
+        "B": "Vì tỷ lệ rời bỏ luôn được lưu dưới dạng số nguyên nên bị mất phần thập phân.",
+        "C": "Vì bảng sự kiện chụp định kỳ không cho phép truy vấn theo chiều thời gian.",
+        "D": "Vì tỷ lệ rời bỏ chỉ được tính một lần duy nhất khi kết thúc dự án."
+      },
+      "ans": "A",
+      "explanation": "Độ đo không cộng được phải tính lại từ tử số và mẫu số ở mức tổng hợp mong muốn. Cộng các tỷ lệ tháng sẽ bỏ qua sự khác biệt về quy mô thuê bao giữa các tháng.",
+      "citation": {
+        "source": "Slide Chương 2 - Case study churn (HUB)",
+        "chapter": 2,
+        "section": "2.5.1",
+        "confidence": 0.95
+      },
+      "bloom_level": "analyze_evaluate",
+      "trap_type": "measure_type"
+    },
+    {
+      "question": "Hoạt động nào sau đây KHÔNG thuộc giai đoạn triển khai và bảo trì hệ thống kho dữ liệu?",
+      "options": {
+        "A": "Đo lường, đánh giá mức độ đáp ứng nhu cầu phân tích của người dùng.",
+        "B": "Hỗ trợ người dùng cuối khai thác báo cáo và xử lý các thắc mắc.",
+        "C": "Quản trị hạ tầng kỹ thuật, bao gồm sao lưu và giám sát hiệu năng.",
+        "D": "Thiết kế ma trận bus và khai báo độ hạt cho các bảng sự kiện mới."
+      },
+      "ans": "D",
+      "explanation": "Triển khai và bảo trì tập trung vào hỗ trợ người dùng, quản trị hạ tầng kỹ thuật và đo lường đánh giá. Thiết kế mô hình là công việc của luồng dữ liệu.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.7",
+        "confidence": 0.96
+      },
+      "bloom_level": "remember",
+      "trap_type": "negation_boundary"
+    },
+    {
+      "question": "Cách đánh giá đúng nhất mức độ thành công của một dự án kho dữ liệu là gì?",
+      "options": {
+        "A": "So sánh các chỉ số thành công đã cam kết trong phạm vi với kết quả thực tế đạt được.",
+        "B": "Đếm số bảng dữ liệu và số gói ETL đã hoàn thành so với kế hoạch ban đầu.",
+        "C": "Đo dung lượng lưu trữ mà hệ thống đang sử dụng so với thiết kế ban đầu.",
+        "D": "Đếm số nhân viên đã được cấp tài khoản truy cập vào hệ thống báo cáo."
+      },
+      "ans": "A",
+      "explanation": "Phạm vi dự án cần đặt chỉ số đánh giá thành công ngay từ đầu. Thành công được đo bằng giá trị nghiệp vụ đạt được so với cam kết, không phải khối lượng kỹ thuật.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.7",
+        "confidence": 0.95
+      },
+      "bloom_level": "analyze_evaluate",
+      "trap_type": "vanity_metric"
+    },
+    {
+      "question": "Trình tự tổng quát đúng của vòng đời phát triển kho dữ liệu là gì?",
+      "options": {
+        "A": "Lập kế hoạch, yêu cầu nghiệp vụ, xác định phạm vi, triển khai và bảo trì, ba luồng song song.",
+        "B": "Xác định phạm vi, lập kế hoạch, ba luồng song song, yêu cầu nghiệp vụ, triển khai và bảo trì.",
+        "C": "Yêu cầu nghiệp vụ, lập kế hoạch, xác định phạm vi, triển khai và bảo trì, ba luồng song song.",
+        "D": "Lập kế hoạch, xác định phạm vi, yêu cầu nghiệp vụ, ba luồng song song, triển khai và bảo trì."
+      },
+      "ans": "D",
+      "explanation": "Trình tự: lập kế hoạch, xác định dự án và phạm vi, phân tích yêu cầu nghiệp vụ, ba luồng song song (công nghệ, dữ liệu, ứng dụng), cuối cùng là triển khai và bảo trì.",
+      "citation": {
+        "source": "Slide Chương 2 - Dự án Kho dữ liệu (HUB)",
+        "chapter": 2,
+        "section": "2.2",
+        "confidence": 0.98
+      },
+      "bloom_level": "apply",
+      "trap_type": "sequence_swap"
+    }
+  ]
+}
