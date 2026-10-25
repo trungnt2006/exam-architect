@@ -1,8 +1,8 @@
-# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM CHUẨN GS.TS (EXAM ARCHITECT v4.0)
+# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM (EXAM ARCHITECT v4.0)
 
 **Tên hệ thống:** Exam Architect  
 **Kho mã nguồn:** https://github.com/trungnt2006/exam-architect.git  
-**Phạm vi áp dụng:** Toàn bộ các môn học và kỳ thi tại HUB cũng như các tiêu chuẩn học thuật đại học.
+**Phạm vi áp dụng:** Toàn bộ các môn học và kỳ thi tại HUB cũng như các môn học đại học.
 
 ---
 
@@ -14,15 +14,15 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
    👉 `"tạo đề [số câu] câu chương [X] môn này"` (hoặc `"làm đề thi thử 40 câu môn này"`)
    - Tự động nhận diện môn học, tài liệu DCMH, Slide chương tương ứng.
    - Tự chia ma trận Bloom chuẩn đại học (~30% Nhận biết, ~40% Thông hiểu, ~30% Vận dụng).
-   - Tự soạn thảo câu hỏi áp dụng 10 Quy tắc Vàng và nguyên tắc Sibling Concepts chuẩn GS.TS.
-   - Tự chạy script kiểm định `question_auditor.py` đảm bảo 100% PASS.
+   - Tự soạn thảo câu hỏi áp dụng 10 Quy tắc Vàng và nguyên tắc Sibling Concepts học hỏi từ Test Bank.
+   - Tự chạy script kiểm định `question_auditor.py` kiểm tra kỹ thuật và logic.
    - Tự xuất file Word chuẩn Azota 1-Click (`<u><b>A.</b></u>`, kèm lời giải chi tiết, kết thúc bằng `HẾT`).
 
-2. **LỆNH NÂNG CẤP TỪ TEST BANK GS.TS:**
+2. **LỆNH HỌC HỎI TỪ TEST BANK:**
    👉 `"hấp thụ test bank [tên_file.pdf]"`
    - Tự động quét file Test Bank quốc tế của tác giả (Pearson, McGraw-Hill, Wiley...).
-   - Trích xuất các nhóm "Thuật ngữ cùng họ" (Sibling Concepts) và câu hỏi mẫu vàng.
-   - Cập nhật tri thức vào bộ nhớ để nâng độ khó cho các lần tạo đề sau.
+   - Trích xuất các nhóm "Thuật ngữ cùng họ" (Sibling Concepts) và câu hỏi mẫu hay.
+   - Cập nhật tri thức vào bộ nhớ để nâng cao chất lượng cho các lần tạo đề sau.
 
 3. **LỆNH KIỂM ĐỊNH ĐỀ THI:**
    👉 `"kiểm định đề [tên_file]"`
@@ -36,7 +36,7 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 
 ---
 
-## I. NGUYÊN TẮC RA ĐỀ CHUẨN GS.TS
+## I. NGUYÊN TẮC RA ĐỀ HỌC HỎI TỪ TEST BANK QUỐC TẾ
 
 1. **Phương án nhiễu cùng họ (Sibling Concepts):** Phương án sai phải là các thuật ngữ, khái niệm hoặc công thức cùng cấp bậc trong chính chương đó. Triệt tiêu các phương án sai ngớ ngẩn, tấu hài.
 2. **Thân câu hỏi đặt vấn đề (Functional Stem):** Tránh câu hỏi học vẹt cộc lốc; đặt câu hỏi vào bối cảnh doanh nghiệp cần ra quyết định hoặc giải quyết tình huống kỹ thuật.

@@ -1,17 +1,17 @@
 ---
 name: exam-architect
-description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm chuẩn đại học và quốc tế (Exam Architect v4.0). Mô phỏng chuẩn mực câu hỏi của GS.TS từ các Test Bank quốc tế (Pearson, McGraw-Hill), áp dụng nguyên tắc Phương án nhiễu cùng họ (Sibling Concepts), kiểm định độc lập không thiên vị, và xuất file Word Azota 1-Click. Hỗ trợ tạo đề tự hành 1-chạm, hấp thụ Test Bank, và kiểm định đề thi có sẵn.
+description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm học thuật (Exam Architect v4.0). Học hỏi phong cách ra đề từ các Test Bank quốc tế (Pearson, McGraw-Hill), áp dụng nguyên tắc Phương án nhiễu cùng họ (Sibling Concepts), kiểm định độc lập không thiên vị, và xuất file Word Azota 1-Click. Hỗ trợ tạo đề tự hành 1-chạm, học hỏi từ Test Bank, và kiểm định đề thi có sẵn.
 metadata:
   version: "4.0"
-  architecture: "Professor-Grade-Exam-Engine"
+  architecture: "Academic-TestBank-Engine"
   author: "Exam Architect Team / Trung Ngo"
   repository: "https://github.com/trungnt2006/exam-architect.git"
-  institution: "Banking University of Ho Chi Minh City (HUB) & Global Academic Standards"
+  institution: "Banking University of Ho Chi Minh City (HUB) & Academic Standards"
 ---
 
-# EXAM ARCHITECT (PHIÊN BẢN 4.0 - CHUYÊN GIA THIẾT KẾ ĐỀ THI CHUẨN GS.TS)
+# EXAM ARCHITECT (PHIÊN BẢN 4.0 - HỆ THỐNG THIẾT KẾ & KIỂM ĐỊNH ĐỀ THI HỌC THUẬT)
 
-**Exam Architect** là hệ thống AI Agent chuyên nghiệp chuyên thiết kế, thẩm định và chuẩn hóa đề thi trắc nghiệm đại học tiệm cận tiêu chuẩn quốc tế của các Giáo sư, Tiến sĩ (GS.TS) từ các bộ Test Bank kinh điển (Pearson, McGraw-Hill, Wiley...).
+**Exam Architect** là hệ thống AI Agent chuyên nghiệp chuyên thiết kế, thẩm định và chuẩn hóa đề thi trắc nghiệm đại học, học hỏi phong cách ra đề từ các bộ Test Bank kinh điển (Pearson, McGraw-Hill, Wiley...), tối ưu hóa 1-Click đưa thẳng lên nền tảng **Azota**.
 
 ---
 
@@ -21,14 +21,14 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent sẽ t�
 
 | Lệnh người dùng | Ví dụ mẫu | Tác vụ Agent tự động thực hiện |
 | :--- | :--- | :--- |
-| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | Tự quét tài liệu (DCMH, Slide, Sách) $\rightarrow$ Tự chia ma trận Bloom $\rightarrow$ Soạn câu hỏi chuẩn GS.TS $\rightarrow$ Tự kiểm định Audit $\rightarrow$ Xuất bản Word Azota 1-Click. |
-| **2. Nâng cấp từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank của GS.TS $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng độ khó cho các lần tạo đề sau. |
+| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | Tự quét tài liệu (DCMH, Slide, Sách) $\rightarrow$ Tự chia ma trận Bloom $\rightarrow$ Soạn câu hỏi học hỏi phong cách Test Bank $\rightarrow$ Tự kiểm định Audit $\rightarrow$ Xuất bản Word Azota 1-Click. |
+| **2. Học hỏi từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank quốc tế $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng cao chất lượng câu hỏi cho các lần tạo đề sau. |
 | **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, bẫy tấu hài $\rightarrow$ Xuất báo cáo `Audit_Report.txt`. |
 | **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn $\rightarrow$ Xuất file Word Azota 1-Click sạch đẹp. |
 
 ---
 
-## 🏛️ TIÊU CHUẨN RA ĐỀ CHUẨN GS.TS (PROFESSOR-GRADE PRINCIPLES)
+## 🏛️ PHONG CÁCH RA ĐỀ HỌC HỎI TỪ TEST BANK QUỐC TẾ
 
 ### 1. Nguyên tắc "Phương án nhiễu cùng họ" (Sibling Concepts Rule)
 - **Tuyệt đối không bịa phương án sai ngớ ngẩn, tấu hài:** Phương án sai phải là các thuật ngữ, khái niệm, hoặc công thức **cùng bậc phân cấp học thuật** nằm trong chính chương đó.
@@ -103,6 +103,6 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 ## 🛠️ DANH MỤC CÔNG CỤ PYTHON TRONG `scripts/`
 
 - `exam_spec_builder.py`: Khởi tạo ma trận 2 chiều Chương × Bloom theo thuật toán phân bổ phần dư lớn nhất (Hamilton-Hare).
-- `question_auditor.py`: Bộ kiểm định chất lượng độc lập quét độ dài $Ratio \le 2.2$, chuỗi lặp, tính nhất quán Lời giải vs Đáp án.
+- `question_auditor.py`: Bộ kiểm định chất lượng độc lập quét độ dài, chuỗi lặp, tính nhất quán Lời giải vs Đáp án.
 - `build_azota_exam.py`: Đóng gói và xuất bản 3 chế độ (Mock Exam SV, Master Bank JSON/MD, Azota 1-Click Word).
-- `testbank_ingester.py`: Tự động phân tích và trích xuất cấu trúc câu hỏi, Sibling Concepts từ file Test Bank PDF của GS.TS để cập nhật tri thức cho Agent.
+- `testbank_ingester.py`: Tự động phân tích và trích xuất cấu trúc câu hỏi, Sibling Concepts từ file Test Bank PDF (Pearson, McGraw-Hill...) để cập nhật tri thức cho Agent.
