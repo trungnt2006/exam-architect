@@ -60,6 +60,31 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent sẽ t�
 
 ---
 
+## IV. HỆ THỐNG KIỂM ĐỊNH 2 TẦNG & MINH BẠCH HỌC THUẬT
+
+Để tránh kiểm định cơ học máy móc và bảo đảm tính trung thực học thuật, hệ thống phân định rõ ràng giữa **Kiểm tra tự động** và **Thẩm định chuyên môn**:
+
+### 1. Tầng 1: Kiểm tra Kỹ thuật & Logic dữ liệu (Technical & Structural Checks)
+- **Lỗi chặn nghiêm trọng (Hard Errors):**
+  - Thiếu phương án (không đủ 4 phương án).
+  - Đáp án không hợp lệ (ngoài A/B/C/D).
+  - Trùng lặp phương án trong cùng một câu.
+  - Mâu thuẫn logic: Đáp án ghi B nhưng Lời giải ghi "Chọn C".
+  - Phương án nhiễu ngớ ngẩn (tấu hài, phi học thuật).
+
+### 2. Tầng 2: Cờ Cảnh báo Sư phạm & Hình thức (Heuristic & Psychometric Flags)
+- **Cờ cảnh báo (Soft Warnings - để người tạo đề rà soát, không ép cứng):**
+  - *Chênh lệch độ dài:* Cảnh báo khi $Ratio > 2.5$. Tuy nhiên, với các câu hỏi tính toán (đáp án số ngắn) hoặc câu hỏi định nghĩa ngắn, chênh lệch độ dài là tự nhiên và hợp lệ.
+  - *Phân bố đáp án:* Cảnh báo khi tỷ lệ lệch ngưỡng thống kê so với mục tiêu gần đều (~25%). Đề ngắn (15-20 câu) không ép chia đều tuyệt đối.
+  - *Chuỗi lặp:* Cảnh báo chuỗi $\ge 3$ câu liên tiếp cùng 1 đáp án.
+  - *Lựa chọn tổng hợp:* Cảnh báo khi có $> 8\%$ câu chứa "Tất cả đều đúng/sai".
+
+### 3. Nguyên tắc Minh bạch Học thuật (Academic Disclaimer)
+- Script Python kiểm tra tự động các lỗi cấu trúc, logic dữ liệu và chỉ số trắc nghiệm. Script **KHÔNG THAY THẾ** việc kiểm định kiến thức chuyên môn của giảng viên.
+- Mọi câu hỏi cần có trích dẫn nguồn (Slide, DCMH, Giáo trình) để người học thuận tiện tra cứu và đối chiếu.
+
+---
+
 ## 🛠️ DANH MỤC CÔNG CỤ PYTHON TRONG `scripts/`
 
 - `exam_spec_builder.py`: Khởi tạo ma trận 2 chiều Chương × Bloom theo thuật toán phân bổ phần dư lớn nhất (Hamilton-Hare).
