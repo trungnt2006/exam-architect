@@ -38,10 +38,25 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent sẽ t�
 - Triệt tiêu câu hỏi học vẹt định nghĩa cộc lốc: *"Khái niệm X là gì?"*.
 - Đổi thành câu hỏi đặt vấn đề: *"Khi doanh nghiệp cần giải quyết tình huống Y trong bối cảnh Z, giải pháp/kiến trúc nào sau đây được ưu tiên hàng đầu?"*.
 
-### 3. Phối hợp tài nguyên 3 lớp có kiểm soát (3-Tier Grounding)
-- **Tầng 1 (DCMH):** Định vị khung, danh mục chương và ma trận Bloom.
-- **Tầng 2 (Slide bài giảng):** Bắt trọn trọng tâm giảng dạy và quy ước riêng của giảng viên trên lớp.
-- **Tầng 3 (Giáo trình & Test Bank quốc tế):** Mở rộng có kiểm soát vào các chi tiết kỹ thuật sâu, bài toán tình huống và Test Bank để phân hóa điểm 8–10 (mọi câu mở rộng bắt buộc có Citation nguồn).
+### 3. Phối hợp tài nguyên 3 lớp & Mở rộng Giáo trình có kiểm soát (Controlled Expansion)
+
+Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắt của DCMH! Khai thác sức mạnh phối hợp của 3 tầng tài liệu:
+
+1. **Tầng 1 — Định vị Khung & Ma trận (Đề cương môn học - DCMH):**
+   - Xác định chuẩn đầu ra (CLO), danh mục các chương học, thời lượng làm bài và ma trận mức độ nhận thức Bloom.
+2. **Tầng 2 — Trọng tâm bài giảng trên lớp (Slide bài giảng):**
+   - Bắt trọn các định nghĩa chuẩn, bảng so sánh đối ngẫu và các lưu ý nghiệp vụ được giảng viên trực tiếp giảng dạy trên lớp.
+3. **Tầng 3 — Đào sâu & Mở rộng có kiểm soát (Giáo trình chính & Test Bank quốc tế - Textbooks):**
+   - **Khuyến khích mở rộng có kiểm soát:** Không dừng lại ở các gạch đầu dòng ngắn của Slide, Agent chủ động khai thác sâu vào các chương tương ứng trong Giáo trình chính (Pearson, McGraw-Hill, Wiley, Giáo trình trường...) để lấy thêm cơ chế kỹ thuật chi tiết, phân tích bản chất và bài toán tình huống nâng cao nhằm phân hóa điểm 8–10.
+   - **Tận dụng Test Bank & Review Questions quốc tế:** Khai thác tối đa các câu hỏi trắc nghiệm kinh điển cuối mỗi chương của giáo trình quốc tế, bản địa hóa sang tiếng Việt tự nhiên kèm thuật ngữ gốc tiếng Anh trong ngoặc đơn.
+   - **Ranh giới "Trong tầm kiểm soát" (Controlled Bounds):**
+     + *Bám rễ từ chương học:* Kiến thức mở rộng phải bắt nguồn từ chủ đề của chương đang học trong DCMH; TUYỆT ĐỐI KHÔNG mở rộng lan man sang các môn học khác hoặc công nghệ không liên quan.
+     + *Phục vụ phân hóa tư duy (Bloom 3-4):* Chỉ mở rộng vào các tình huống thực tiễn, đánh đổi kiến trúc (trade-off) và cơ chế chuyên sâu; không hỏi mẹo vặt đánh đố vô nghĩa.
+     + *Bắt buộc có Citation dẫn chứng rõ ràng:* Mọi câu hỏi mở rộng bắt buộc phải ghi rõ metadata trong Lời giải: `Tên giáo trình`, `Chương mấy`, `Mục / Trang cụ thể`.
+
+- **Thứ bậc ưu tiên khi tài liệu mâu thuẫn:**
+  $$\text{Slide bài giảng của GV trực tiếp dạy} > \text{Đề cương chi tiết (DCMH)} > \text{Giáo trình chính (Textbook)} > \text{Tài liệu tham khảo trên mạng}$$
+  Nếu Slide bài giảng của thầy cô trên lớp có quy ước hoặc quan điểm riêng, **ưu tiên tuyệt đối theo Slide của thầy cô**, đồng thời mở ngoặc giải thích thêm góc nhìn của giáo trình để người học nắm trọn vẹn vấn đề.
 
 ---
 

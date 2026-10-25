@@ -47,11 +47,25 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 
 ---
 
-## II. PHỐI HỢP NGUỒN TÀI NGUYÊN 3 LỚP & MỞ RỘNG CÓ KIỂM SOÁT
+## II. PHỐI HỢP NGUỒN TÀI NGUYÊN 3 LỚP & MỞ RỘNG GIÁO TRÌNH CÓ KIỂM SOÁT (CONTROLLED EXPANSION)
 
-1. **Tầng 1 (DCMH):** Định vị khung, danh mục chương và ma trận Bloom.
-2. **Tầng 2 (Slide bài giảng):** Bắt trọn nội dung cốt lõi và quy ước giảng dạy của giảng viên trên lớp.
-3. **Tầng 3 (Giáo trình chính & Test Bank quốc tế):** Mở rộng có kiểm soát vào các chi tiết kỹ thuật sâu, bài toán tình huống nâng cao để phân hóa điểm 8–10 (bắt buộc có Citation dẫn chứng rõ ràng).
+Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắt của DCMH! Khai thác sức mạnh phối hợp của 3 tầng tài liệu:
+
+1. **Tầng 1 — Định vị Khung & Ma trận (Đề cương môn học - DCMH):**
+   - Xác định chuẩn đầu ra (CLO), danh mục các chương, hình thức thi và ma trận Bloom chuẩn.
+2. **Tầng 2 — Trọng tâm bài giảng trên lớp (Slide bài giảng):**
+   - Bắt trọn các định nghĩa, bảng so sánh đối ngẫu và lưu ý nghiệp vụ được giảng viên trực tiếp giảng dạy.
+3. **Tầng 3 — Đào sâu & Mở rộng có kiểm soát (Giáo trình chính & Test Bank quốc tế - Textbooks):**
+   - **Khuyến khích mở rộng có kiểm soát:** Chủ động khai thác sâu vào các chương tương ứng trong Giáo trình chính (Pearson, McGraw-Hill, Wiley, Giáo trình trường...) để lấy thêm cơ chế kỹ thuật chi tiết, bài toán tình huống nâng cao và các phân tích bản chất nhằm phân hóa điểm 8–10.
+   - **Tận dụng Test Bank & Review Questions quốc tế:** Khai thác tối đa các câu hỏi trắc nghiệm kinh điển cuối mỗi chương của giáo trình quốc tế, bản địa hóa sang tiếng Việt tự nhiên kèm thuật ngữ gốc tiếng Anh trong ngoặc đơn.
+   - **Ranh giới "Trong tầm kiểm soát" (Controlled Bounds):**
+     + *Bám rễ từ chương học:* Kiến thức mở rộng phải bắt nguồn từ chủ đề của chương đang học trong DCMH, TUYỆT ĐỐI KHÔNG mở rộng lan man sang môn học khác.
+     + *Phục vụ phân hóa tư duy (Bloom 3-4):* Chỉ mở rộng vào các tình huống thực tiễn, đánh đổi kiến trúc (trade-off) và cơ chế chuyên sâu; không hỏi mẹo vặt ngoài phạm vi.
+     + *Bắt buộc có Citation dẫn chứng rõ ràng:* Mọi câu hỏi mở rộng bắt buộc phải ghi rõ metadata trong Lời giải: `Tên giáo trình`, `Chương mấy`, `Trang cụ thể`.
+
+- **Thứ bậc ưu tiên khi tài liệu mâu thuẫn:**
+  $$\text{Slide bài giảng của GV trực tiếp dạy} > \text{Đề cương chi tiết (DCMH)} > \text{Giáo trình chính (Textbook)} > \text{Tài liệu tham khảo trên mạng}$$
+  Nếu Slide bài giảng trên lớp của giảng viên có quy ước hoặc quan điểm riêng, **ưu tiên tuyệt đối theo Slide**, đồng thời mở ngoặc giải thích thêm góc nhìn của giáo trình để người học nắm toàn diện.
 
 ---
 
