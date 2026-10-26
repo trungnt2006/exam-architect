@@ -21,10 +21,10 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 
 | Lệnh người dùng | Ví dụ mẫu | Tác vụ Agent tự động thực hiện |
 | :--- | :--- | :--- |
-| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | Tự quét tài liệu (DCMH, Slide, Sách) $\rightarrow$ Phân rã chủ đề con $\rightarrow$ Chia ma trận Bloom $\rightarrow$ Soạn câu hỏi theo 4 format & 10 Quy tắc Vàng $\rightarrow$ Chạy kiểm định 2 tầng $\rightarrow$ Xuất bản Word Azota 1-Click. |
+| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | Tự quét tài liệu (DCMH, Slide, Sách) $\rightarrow$ Phân rã chủ đề con $\rightarrow$ Chia ma trận Bloom $\rightarrow$ Soạn câu hỏi theo 4 format & 10 Quy tắc Vàng $\rightarrow$ Chạy kiểm định 2 tầng $\rightarrow$ Xuất duy nhất 1 file Word Azota 1-Click (chỉ xuất file thi thử khi có yêu cầu). |
 | **2. Học hỏi từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank quốc tế $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng cao chất lượng câu hỏi cho các lần tạo đề sau. |
-| **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, kiểm tra trùng lặp thân câu, bẫy tấu hài $\rightarrow$ Xuất báo cáo `Audit_Report.txt`. |
-| **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn $\rightarrow$ Xuất file Word Azota 1-Click sạch đẹp. |
+| **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, kiểm tra trùng lặp thân câu, bẫy tấu hài $\rightarrow$ Hiển thị Báo cáo kiểm định trực tiếp trong chat (tuyệt đối không xuất file `.txt`). |
+| **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn $\rightarrow$ Xuất file Word Azota 1-Click duy nhất (không tạo file Mock Exam trừ khi được yêu cầu). |
 
 ---
 
@@ -190,5 +190,5 @@ Trước khi ra đề, Agent tự động phân tích đề cương/slide để 
 
 - `exam_spec_builder.py`: Khởi tạo ma trận 2 chiều Chủ đề con / Chương × Mức Bloom theo thuật toán phân bổ phần dư lớn nhất (Hamilton-Hare).
 - `question_auditor.py`: Bộ kiểm định chất lượng độc lập 2 tầng quét độ dài, chuỗi lặp, tính nhất quán Lời giải vs Đáp án, trùng lặp thân câu hỏi.
-- `build_azota_exam.py`: Đóng gói và xuất bản 3 chế độ (Mock Exam SV, Master Bank JSON/MD, Azota 1-Click Word).
+- `build_azota_exam.py`: Đóng gói và xuất bản file Word chuẩn Azota 1-Click (mặc định chỉ xuất duy nhất 1 file Word .docx; chỉ xuất đề thi thử khi người dùng yêu cầu).
 - `testbank_ingester.py`: Tự động phân tích và trích xuất cấu trúc câu hỏi, Sibling Concepts từ file Test Bank PDF (Pearson, McGraw-Hill...) để cập nhật tri thức cho Agent.
