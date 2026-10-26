@@ -147,7 +147,8 @@ Trước khi ra đề, Agent tự động phân tích đề cương/slide để 
 ## 📄 QUY CHUẨN XUẤT BẢN AZOTA 1-CLICK (.DOCX)
 - **Tiêu đề câu:** `Câu X: [Nội dung]` (in đậm chữ `Câu X: `).
 - **Đáp án đúng:** Gạch chân và in đậm chữ cái đầu phương án (`<u><b>A.</b></u>`).
-- **Lời giải:** Có khối `Lời giải:\nChọn X.\n[Giải thích chi tiết, thế số tính toán và phân tích bẫy thi]`.
+- **Lời giải:** Có khối `Lời giải:\nChọn X.\n[Giải thích chi tiết, thế số tính toán và phân tích bẫy thi]\n📌 [Metadata: Nguồn | Mức độ | Chủ đề | Dạng]`.
+- **Khối Bảng Đặc Tả Đề Thi (Exam Blueprint Metadata):** Đầu file Word chuẩn Azota luôn tích hợp Bảng đặc tả đề thi chuẩn đại học (Đơn vị, Tên học phần, Phạm vi nội dung, Quy mô, Ma trận Bloom, Tỷ lệ phân bổ chủ đề con, Cân bằng đáp án A/B/C/D và Nguồn tham chiếu). Đồng thời thiết lập thuộc tính tệp (Core Properties: Title, Subject, Author, Category) trong MS Word.
 - **Kết thúc đề:** Dòng **`HẾT`** in đậm căn giữa. Tuyệt đối **KHÔNG** để bảng đáp án thừa ở cuối file để tránh lỗi nuốt chữ của trình soạn thảo Azota.
 - **Nguyên tắc Tinh gọn Tệp xuất bản (Clean Deliverables Rule):**
   - Mặc định **CHỈ XUẤT BẢN DUY NHẤT FILE WORD `.docx`** (File chuẩn Azota `De_..._Azota_Chuan.docx` và/hoặc File Đề thi thử `De_Thi_Thu_Mock_Exam_...docx`).
