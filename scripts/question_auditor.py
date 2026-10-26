@@ -170,6 +170,27 @@ class QuestionAuditor:
                     report["warnings"].append(
                         f"[Lưu ý phân bố] Đáp án '{let}' xuất hiện {count} lần (Mục tiêu gần đều: ~{target:.0f} ± {tolerance}). Hãy rà soát lại nếu muốn đề ngẫu nhiên hơn."
                     )
+
+        # Check duplicate or near-duplicate question stems (Anti-redundancy check)
+        stems = [q.get('stem', '').strip().lower() for q in questions_list]
+        for i in range(len(stems)):
+            if not stems[i]:
+                continue
+            words_i = set(re.findall(r'\w+', stems[i]))
+            for j in range(i + 1, len(stems)):
+                if not stems[j]:
+                    continue
+                if stems[i] == stems[j]:
+                    report["errors"].append(f"Câu {i+1} và Câu {j+1}: Trùng lặp hoàn toàn nội dung thân câu hỏi!")
+                    report["technically_valid"] = False
+                else:
+                    words_j = set(re.findall(r'\w+', stems[j]))
+                    if len(words_i) >= 6 and len(words_j) >= 6:
+                        overlap = len(words_i & words_j) / max(len(words_i), len(words_j))
+                        if overlap > 0.85:
+                            report["warnings"].append(
+                                f"Câu {i+1} và Câu {j+1}: [Cảnh báo trùng lặp] Thân câu hỏi có độ tương đồng từ ngữ cao ({overlap*100:.0f}%). Cần rà soát để tránh trùng lặp đề tài."
+                            )
                     
         return report
 
