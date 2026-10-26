@@ -36,8 +36,9 @@ Người dùng chỉ cần đưa ra một câu lệnh ngắn gọn, Agent sẽ t
 
 ## 📋 BỘ 4 FORMAT CÂU HỎI CHUYÊN SÂU ĐẠI HỌC
 
-1. **Format 1: Ghép mệnh đề kết hợp (Compound Statements - Đúng/Sai, (i) & (ii)):**
-   - Cho 2 nhận định kỹ thuật `(i)` và `(ii)`. 4 phương án cố định: `A. (i) Đúng, (ii) Sai`, `B. (i) Sai, (ii) Đúng`, `C. Cả (i) và (ii) đều đúng`, `D. Cả (i) và (ii) đều sai`. Triệt tiêu hoàn toàn thói quen đoán mò 50/50.
+1. **Format 1: Thẩm định Tổ hợp Mệnh đề (Multi-Statement Evaluation - Linh hoạt 2 đến 4 mệnh đề):**
+   - *Biến thể 1A (Cặp đối ngẫu (i) & (ii)):* 4 phương án chuẩn `(i) Đúng, (ii) Sai` v.v. để so sánh 2 trường phái đối nghịch.
+   - *Biến thể 1B (Tổ hợp 3–4 mệnh đề (i), (ii), (iii), (iv)):* Đưa ra 3-4 nhận định, hỏi các nhận định đúng hoặc số lượng nhận định đúng để kiểm tra tính tổng hợp toàn chương. Triệt tiêu hoàn toàn thói quen đoán mò 50/50.
 2. **Format 2: Tình huống nghiệp vụ & Đánh đổi kiến trúc (Scenario-based & Architectural Trade-offs):**
    - Mini-case thực tế (3-5 dòng) trong ngành Ngân hàng, Bán lẻ, Tài chính có ràng buộc kỹ thuật. Yêu cầu chọn giải pháp tối ưu và giải thích rõ ưu/nhược điểm (trade-off).
 3. **Format 3: Trình tự quy trình & Luồng xử lý (Process Sequencing & Lifecycle Stages):**

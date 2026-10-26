@@ -73,9 +73,10 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 
 ## III. BỘ 4 ĐỊNH DẠNG CÂU HỎI CHUYÊN SÂU ĐẠI HỌC (4 IN-DEPTH EXAM FORMATS)
 
-1. **Format 1: Ghép mệnh đề kết hợp (Compound Statements - Đúng/Sai, (i) & (ii)):**
-   - Cấu trúc: Cho 2 nhận định kỹ thuật `(i)` và `(ii)`. 4 phương án cố định: `A. (i) Đúng, (ii) Sai`, `B. (i) Sai, (ii) Đúng`, `C. Cả (i) và (ii) đều đúng`, `D. Cả (i) và (ii) đều sai`.
-   - Mục đích: Triệt tiêu đoán mò 50/50, phân hóa tư duy bao quát.
+1. **Format 1: Thẩm định Tổ hợp Mệnh đề (Multi-Statement Evaluation - Linh hoạt 2 đến 4 mệnh đề):**
+   - *Biến thể 1A (Cặp đối ngẫu 2 mệnh đề `(i)` & `(ii)`):* 4 phương án chuẩn `A. (i) Đúng, (ii) Sai`, `B. (i) Sai, (ii) Đúng`, `C. Cả (i) và (ii) đều đúng`, `D. Cả (i) và (ii) đều sai`. Thích hợp so sánh cặp khái niệm đối ngẫu.
+   - *Biến thể 1B (Tổ hợp 3–4 mệnh đề `(i), (ii), (iii), (iv)`):* Đưa ra 3-4 nhận định độc lập, hỏi *"Những nhận định nào ĐÚNG?"* hoặc *"Có bao nhiêu nhận định ĐÚNG?"*. 4 phương án là các tập hợp con (ví dụ: `A. Chỉ (i) và (iii)`, `B. Chỉ (ii) và (iv)`, `C. (i), (ii) và (iii)`, `D. Cả 4 nhận định đều đúng`) hoặc số lượng (1, 2, 3, 4).
+   - Mục đích: Triệt tiêu đoán mò 50/50, kiểm tra tư duy tổng hợp bao quát nhiều chủ đề con cùng lúc.
 2. **Format 2: Tình huống nghiệp vụ & Đánh đổi kiến trúc (Scenario-based & Architectural Trade-offs):**
    - Cấu trúc: Mini-case vignette (3-5 dòng) trong bối cảnh ngân hàng, tài chính, doanh nghiệp có ràng buộc khắt khe.
    - Mục đích: Chọn giải pháp tối ưu và phân tích rõ sự đánh đổi (trade-off).

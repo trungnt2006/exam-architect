@@ -4,7 +4,7 @@
 ### Added
 - **Định hướng chuyên sâu 100% vào Ra đề (Question Authoring):** Loại bỏ tính năng ngoài lề, tập trung hoàn toàn vào kỹ nghệ thiết kế và biên soạn đề thi đại học.
 - **Bộ 4 Định dạng câu hỏi chuyên sâu:**
-  1. *Format 1:* Ghép mệnh đề kết hợp (Compound Statements - Đúng/Sai, (i) & (ii)) triệt tiêu đoán mò 50/50.
+  1. *Format 1:* Thẩm định Tổ hợp Mệnh đề (Multi-Statement Evaluation) linh hoạt từ 2 mệnh đề đối ngẫu `(i)` & `(ii)` đến 3–4 mệnh đề tổng hợp `(i), (ii), (iii), (iv)` chọn tập hợp con hoặc đếm số lượng đúng. Triệt tiêu đoán mò 50/50.
   2. *Format 2:* Tình huống nghiệp vụ & Đánh đổi kiến trúc (Scenario-based & Architectural Trade-offs) cho bài toán điểm 8-10.
   3. *Format 3:* Trình tự quy trình & Luồng xử lý (Process Sequencing & Lifecycle Stages).
   4. *Format 4:* Tính toán vi mô 30 giây (Micro-Calculation & Formula Traps) với bước giải nháp, đơn vị và quy ước làm tròn bắt buộc.

@@ -67,19 +67,21 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 
 Để đề thi đạt độ phân hóa cao, kích thích tư duy phản biện và phản ánh đúng chất lượng kỳ thi đại học, Exam Architect v4.0 chuẩn hóa **4 định dạng câu hỏi chuyên sâu**:
 
-### Format 1: Ghép mệnh đề kết hợp (Compound Statements - Đúng/Sai, (i) & (ii))
-- **Cấu trúc:** Thân câu hỏi đưa ra 2 nhận định kỹ thuật hoặc nguyên lý nghiệp vụ đánh dấu `(i)` và `(ii)`.
-- **4 phương án chuẩn:**
-  - `A. (i) Đúng, (ii) Sai.`
-  - `B. (i) Sai, (ii) Đúng.`
-  - `C. Cả (i) và (ii) đều đúng.`
-  - `D. Cả (i) và (ii) đều sai.`
-- **Ưu điểm sư phạm:** Đòi hỏi thí sinh phải thẩm định độc lập từng mệnh đề, triệt tiêu hoàn toàn thói quen loại trừ hay đoán mò 50/50.
-- **Ví dụ mẫu:**
-  > Cho hai nhận định sau về kiến trúc Data Warehouse:  
-  > (i) Trong mô hình Inmon (EDW), các Data Mart phụ thuộc được xây dựng sau khi Enterprise Data Warehouse ở dạng chuẩn 3NF đã hoàn thành.  
-  > (ii) Trong mô hình Kimball, Data Warehouse được xây dựng tích lũy thông qua tập hợp các Dimensional Data Mart sử dụng Conformed Dimensions.  
-  > <u><b>C.</b></u> Cả (i) và (ii) đều đúng.
+### Format 1: Thẩm định Tổ hợp Mệnh đề (Multi-Statement Evaluation - Linh hoạt từ 2 đến 4 mệnh đề)
+Triệt tiêu hoàn toàn thói quen loại trừ hay đoán mò 50/50, đánh giá khả năng bao quát kiến thức với 2 biến thể thực tế:
+- **Biến thể 1A (Cặp mệnh đề đối ngẫu - 2 statements `(i)` & `(ii)`):**
+  - *Cấu trúc:* Thân câu hỏi đưa ra 2 nhận định kỹ thuật hoặc nguyên lý nghiệp vụ đối ngẫu.
+  - *4 phương án cố định:*
+    - `A. (i) Đúng, (ii) Sai.`
+    - `B. (i) Sai, (ii) Đúng.`
+    - `C. Cả (i) và (ii) đều đúng.`
+    - `D. Cả (i) và (ii) đều sai.`
+  - *Thích hợp cho:* So sánh 2 trường phái đối nghịch (Inmon vs Kimball, Star vs Snowflake, OLTP vs OLAP...).
+- **Biến thể 1B (Tổ hợp đa mệnh đề - 3 đến 4 statements `(i), (ii), (iii), (iv)`):**
+  - *Cấu trúc:* Thân câu hỏi đưa ra 3–4 nhận định kỹ thuật độc lập bao quát nhiều khía cạnh khác nhau của chương học.
+  - *Câu hỏi:* *"Trong các nhận định trên, những nhận định nào ĐÚNG?"* (hoặc *"Có bao nhiêu nhận định ĐÚNG?"*).
+  - *4 phương án:* Các tập hợp con tổ hợp (ví dụ: `A. Chỉ (i) và (iii).`, `B. Chỉ (ii) và (iv).`, `C. (i), (ii) và (iii).`, `D. Tất cả các nhận định trên đều đúng.`) hoặc dạng số lượng (`A. 1`, `B. 2`, `C. 3`, `D. 4`).
+  - *Thích hợp cho:* Câu hỏi tổng hợp ôn tập toàn chương hoặc đề thi cuối kỳ, đòi hỏi thí sinh thẩm định đồng thời nhiều kiến thức liên hoàn.
 
 ### Format 2: Tình huống nghiệp vụ & Đánh đổi kiến trúc (Scenario-based & Architectural Trade-offs)
 - **Cấu trúc:** Thân câu hỏi mở đầu bằng một bài toán kinh doanh (mini-case vignette 3–5 dòng) trong ngành Ngân hàng, Tài chính, Bán lẻ hoặc Viễn thông với các ràng buộc khắt khe (chi phí lưu trữ, độ trễ xử lý, tính toàn vẹn dữ liệu, quy định kiểm toán).
