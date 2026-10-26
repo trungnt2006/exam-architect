@@ -1,15 +1,15 @@
 ---
 name: exam-architect
-description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm học thuật (Exam Architect v4.0). Tập trung chuyên sâu vào quy trình ra đề đại học: áp dụng 4 format câu hỏi chuyên sâu (Ghép mệnh đề, Tình huống nghiệp vụ, Thứ tự quy trình, Tính toán vi mô), phân rã chủ đề con & chống trùng lặp khái niệm, học hỏi nguyên tắc Sibling Concepts từ Test Bank quốc tế, kiểm định 2 tầng độc lập và xuất file Word Azota 1-Click.
+description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm học thuật (Exam Architect v4.1). Tập trung chuyên sâu vào quy trình ra đề đại học: áp dụng 4 format câu hỏi chuyên sâu (Ghép mệnh đề, Tình huống nghiệp vụ, Thứ tự quy trình, Tính toán vi mô), phân rã chủ đề con & chống trùng lặp khái niệm, học hỏi nguyên tắc Sibling Concepts từ Test Bank quốc tế, kiểm định 2 tầng độc lập và xuất file Word Azota 1-Click.
 metadata:
-  version: "4.0"
+  version: "4.1"
   architecture: "Academic-TestBank-Engine"
   author: "Exam Architect Team / Trung Ngo"
   repository: "https://github.com/trungnt2006/exam-architect.git"
   institution: "Banking University of Ho Chi Minh City (HUB) & Academic Standards"
 ---
 
-# EXAM ARCHITECT (PHIÊN BẢN 4.0 - HỆ THỐNG THIẾT KẾ & KIỂM ĐỊNH ĐỀ THI HỌC THUẬT)
+# EXAM ARCHITECT (PHIÊN BẢN 4.1 - HỆ THỐNG THIẾT KẾ & KIỂM ĐỊNH ĐỀ THI HỌC THUẬT)
 
 **Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phương pháp ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tối ưu hóa tư duy phân hóa qua 4 format câu hỏi chuyên sâu, bảo đảm độ phủ kiến thức không trùng lặp và đóng gói 1-Click đưa thẳng lên nền tảng **Azota**.
 
@@ -65,7 +65,7 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 
 ## 📋 BỘ 4 ĐỊNH DẠNG CÂU HỎI CHUYÊN SÂU ĐẠI HỌC (4 IN-DEPTH EXAM FORMATS)
 
-Để đề thi đạt độ phân hóa cao, kích thích tư duy phản biện và phản ánh đúng chất lượng kỳ thi đại học, Exam Architect v4.0 chuẩn hóa **4 định dạng câu hỏi chuyên sâu**:
+Để đề thi đạt độ phân hóa cao, kích thích tư duy phản biện và phản ánh đúng chất lượng kỳ thi đại học, Exam Architect v4.1 chuẩn hóa **4 định dạng câu hỏi chuyên sâu**:
 
 ### Format 1: Thẩm định Tổ hợp Mệnh đề (Multi-Statement Evaluation - Linh hoạt từ 2 đến 4 mệnh đề)
 Triệt tiêu hoàn toàn thói quen loại trừ hay đoán mò 50/50, đánh giá khả năng bao quát kiến thức với 2 biến thể thực tế:
@@ -104,7 +104,7 @@ Triệt tiêu hoàn toàn thói quen loại trừ hay đoán mò 50/50, đánh g
 
 ## 🎯 CƠ CHẾ PHÂN BỔ CHỦ ĐỀ CON & CHỐNG TRÙNG LẶP KHÁI NIỆM (TOPIC COVERAGE & ANTI-REDUNDANCY)
 
-Khi sinh đề số lượng lớn (30–50 câu cho một chương hoặc môn học), rủi ro lớn nhất là AI bị "ám ảnh" bởi một vài khái niệm phổ biến và lặp đi lặp lại chúng. Exam Architect v4.0 giải quyết triệt để vấn đề này qua cơ chế 3 tầng:
+Khi sinh đề số lượng lớn (30–50 câu cho một chương hoặc môn học), rủi ro lớn nhất là AI bị "ám ảnh" bởi một vài khái niệm phổ biến và lặp đi lặp lại chúng. Exam Architect v4.1 giải quyết triệt để vấn đề này qua cơ chế 3 tầng:
 
 ### 1. Phân rã Chủ đề con (Sub-topic Decomposition)
 Trước khi ra đề, Agent tự động phân tích đề cương/slide để chia nội dung cần kiểm tra thành danh mục 4–8 chủ đề con (Sub-topics).

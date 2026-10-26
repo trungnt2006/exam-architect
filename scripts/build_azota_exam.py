@@ -59,7 +59,7 @@ def export_mock_exam_for_students(items, subject_title, duration_minutes, output
     core_props = doc.core_properties
     core_props.title = f"Đề thi mô phỏng: {subject_title}"
     core_props.subject = subject_title
-    core_props.author = "Exam Architect (HUB v4.0)"
+    core_props.author = "Exam Architect (HUB v4.1)"
     core_props.category = "Đề thi thử sinh viên"
     core_props.comments = f"Đề thi thử mô phỏng {len(items)} câu trắc nghiệm (không đáp án) dành cho sinh viên tự bấm giờ làm bài."
     
@@ -147,7 +147,7 @@ def export_azota_package(items, subject_title, output_path, subtitle=""):
     core_props = doc.core_properties
     core_props.title = f"Đề thi: {subject_title} - {subtitle}".strip(" -")
     core_props.subject = subject_title
-    core_props.author = "Exam Architect (HUB v4.0)"
+    core_props.author = "Exam Architect (HUB v4.1)"
     core_props.category = "Ngân hàng câu hỏi trắc nghiệm đại học"
     core_props.comments = f"Đề thi {len(items)} câu trắc nghiệm chuẩn Azota 1-Click."
     
