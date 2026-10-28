@@ -15,9 +15,9 @@ metadata:
 
 ---
 
-## ⚡ HỆ THỐNG 4 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
+## ⚡ HỆ THỐNG 5 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
 
-Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự động thực thi trọn gói pipeline ra đề:
+Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự động thực thi trọn gói pipeline:
 
 | Lệnh người dùng | Ví dụ mẫu | Tác vụ Agent tự động thực hiện |
 | :--- | :--- | :--- |
@@ -25,13 +25,15 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 | **2. Học hỏi từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank quốc tế $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng cao chất lượng câu hỏi cho các lần tạo đề sau. |
 | **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, kiểm tra trùng lặp thân câu, bẫy tấu hài $\rightarrow$ Hiển thị Báo cáo kiểm định trực tiếp trong chat (tuyệt đối không xuất file `.txt`). |
 | **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn $\rightarrow$ Xuất file Word Azota 1-Click duy nhất (không tạo file Mock Exam trừ khi được yêu cầu). |
+| **5. Meta-Prompt cho NotebookLM** | `meta prompt azota`<br/>`phân tích kết quả này` | Đọc kết quả thi Azota $\rightarrow$ Lọc ra các câu sai (`✗`) $\rightarrow$ Phân rã lỗ hổng kiến thức $\rightarrow$ Xuất khối Meta-Prompt chuẩn hóa để dán vào NotebookLM nhờ đối chiếu Slide/Giáo trình giảng lại bản chất và giải mã bẫy thi. |
 
 ---
 
 ## 🏛️ PHONG CÁCH RA ĐỀ HỌC HỎI TỪ TEST BANK QUỐC TẾ
 
 ### 1. Nguyên tắc "Phương án nhiễu cùng họ" (Sibling Concepts Rule)
-- **Tuyệt đối không bịa phương án sai ngớ ngẩn, tấu hài:** Phương án sai phải là các thuật ngữ, khái niệm, hoặc công thức **cùng bậc phân cấp học thuật** nằm trong chính chương đó.
+- **Tuyệt đối không bịa phương án sai ngớ ngẩn, tấu hài:** Phương án sai phải là các thuật ngữ, khái niệm, hoặc công thức **cùng bậc phân cấp học thuật** và **cùng miền chuyên môn** nằm trong chính chương đó (cấm đưa khái niệm nông nghiệp, phần cứng tản nhiệt, kế toán thủ công vào bài toán TMĐT/Kho dữ liệu).
+- **Triệt tiêu bẫy bắt chữ / Lộ nghĩa đen (Anti-Clang Association):** Thân câu hỏi không dùng các từ ngữ đời thường để mớm nghĩa đen cho đáp án (ví dụ: thân câu dùng chữ *"mua cùng nhau"*, phương án ghi *"giỏ hàng"*). Thân câu phải được nâng cấp lên thuật ngữ học thuật (ví dụ: *"mối quan hệ đồng xuất hiện (co-occurrence) giữa các danh mục sản phẩm"*).
 - *Ví dụ minh họa từ Test Bank Pearson:* Khi hỏi về đặc tính dữ liệu *"Granularity"*, cả 3 phương án nhiễu phải là các đặc tính dữ liệu anh em cùng chương: *Data reliability*, *Data accessibility*, *Data richness*. Thí sinh đọc vào thấy tất cả đều quen thuộc, chỉ người hiểu bản chất mới chọn đúng!
 
 ### 2. Thân câu hỏi giải quyết bài toán nghiệp vụ (Functional & Scenario Stems)
@@ -131,8 +133,11 @@ Trước khi ra đề, Agent tự động phân tích đề cương/slide để 
 
 ## 🎯 BỘ 10 QUY TẮC VÀNG THIẾT KẾ CÂU HỎI
 
-1. **Cân bằng độ dài (Equal Length Rule):** Tỷ lệ ký tự giữa phương án dài nhất và ngắn nhất $\le 2.2$. Triệt tiêu mẹo *"dài nhất là đúng"*.
-2. **Đồng nhất cấu trúc ngữ pháp:** Cả 4 phương án có cùng dạng câu, cùng từ loại bắt đầu (cùng cụm danh từ, hoặc cùng bắt đầu bằng động từ).
+1. **Cân bằng độ dài (Equal Length Rule):** Tỷ lệ ký tự giữa phương án dài nhất và ngắn nhất $\le 2.0$. Tuyệt đối không để phương án đúng dài vượt trội kèm diễn giải lê thê trong khi các câu sai cộc lốc.
+2. **Đồng nhất cấu trúc & Đối xứng chú thích thuật ngữ (Structural & Notational Symmetry):**
+   - Cả 4 phương án có cùng dạng câu, cùng từ loại bắt đầu (cùng cụm danh từ, hoặc cùng bắt đầu bằng động từ).
+   - **Quy tắc Đối xứng Chú thích Tiếng Anh (English Term Symmetry):** Nếu phương án đúng có mở ngoặc chú thích thuật ngữ tiếng Anh `(English Term)` thì **bắt buộc cả 3 phương án nhiễu cũng phải có chú thích tiếng Anh tương ứng** cùng cấp bậc. Nếu là câu thuần Việt thì **100% cả 4 phương án đều dùng thuần Việt**, tuyệt đối không để duy nhất phương án đúng có tiếng Anh (dẫn đến lộ đáp án).
+   - **Quy tắc Chống thiên vị diễn giải (No Elaboration Bias):** Phương án đúng không được "kèm vế giải thích phụ" (`...nhằm mục đích... và xác định...`) trong khi các phương án sai chỉ là cụm từ cộc lốc.
 3. **Kiểm soát phương án tổng hợp & Bẫy ngược (Reverse Traps):** Tiết chế tần suất *"Tất cả đều đúng/sai"* ($\le 5\%-8\%$ số câu). Khuyến khích dùng làm **phương án nhiễu** để bẫy thí sinh có thói quen đoán mò.
 4. **Hoán vị ngẫu nhiên A/B/C/D:** Tỷ lệ phân bố ~25% cho mỗi phương án, không có chuỗi lặp bất thường $\ge 3$ câu liên tiếp cùng 1 đáp án.
 5. **Tình huống nghiệp vụ thực tế:** Đưa bài toán ngân hàng, tài chính, doanh nghiệp cụ thể vào câu hỏi.
@@ -170,7 +175,8 @@ Trước khi ra đề, Agent tự động phân tích đề cương/slide để 
   - Trùng lặp phương án trong cùng một câu.
   - Mâu thuẫn logic: Đáp án ghi B nhưng Lời giải ghi "Chọn C".
   - Trùng lặp 100% nội dung thân câu hỏi giữa các câu.
-  - Phương án nhiễu ngớ ngẩn (tấu hài, phi học thuật).
+  - Phương án nhiễu ngớ ngẩn (tấu hài, phi học thuật, lạc miền chuyên môn).
+  - **Bất đối xứng chú thích tiếng Anh:** Duy nhất phương án đúng có chú thích thuật ngữ tiếng Anh `(English Term)` trong khi 3 phương án khác không có (hoặc ngược lại).
 
 ### 2. Tầng 2: Cờ Cảnh báo Sư phạm & Hình thức (Heuristic & Psychometric Flags)
 - **Cờ cảnh báo (Soft Warnings - gợi ý người tạo đề xem xét, không ép cứng):**

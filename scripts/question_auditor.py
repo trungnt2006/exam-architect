@@ -17,7 +17,10 @@ class QuestionAuditor:
         self.spec = spec or {}
         self.silly_keywords = [
             'búa đập', 'đập vỡ', 'virus máy tính', 'quét rác', 'đi bộ quanh phòng', 
-            'lớp học', 'chạy qua đêm', 'trojan', 'sổ tay lập trình viên', 'mua sắm ngoài trời'
+            'lớp học', 'chạy qua đêm', 'trojan', 'sổ tay lập trình viên', 'mua sắm ngoài trời',
+            'quạt làm mát', 'tốc độ quay của quạt', 'phân bón', 'nguyên vật liệu thô',
+            'sổ sách kế toán thủ công', 'thu ngân ghi tay', 'pha trà', 'pha cà phê',
+            'chạy bộ', 'đếm tiền thủ công', 'dọn dẹp bàn làm việc'
         ]
         self.composite_phrases = [
             'tất cả các đáp án', 'tất cả đáp án', 'tất cả các phương án', 
@@ -62,8 +65,24 @@ class QuestionAuditor:
             if k != ans and any(s in vl for s in self.silly_keywords):
                 errors.append(f"Câu {idx} [{k}]: Phương án nhiễu ngớ ngẩn/tấu hài ('{v}')")
 
+        # 4. English term / Parenthetical annotation asymmetry (Bất đối xứng chú thích thuật ngữ tiếng Anh)
+        # Regex to find parenthetical English terms like (Market Basket Analysis), (RFM Analysis), etc.
+        eng_paren_regex = re.compile(r'\([A-Za-z0-9\s\-_/]{3,}\)')
+        opts_with_eng = {k: bool(eng_paren_regex.search(v)) for k, v in opts.items()}
+        num_with_eng = sum(opts_with_eng.values())
+        
+        if num_with_eng == 1 and opts_with_eng.get(ans, False):
+            errors.append(
+                f"Câu {idx}: [Lộ đáp án hình thức] Duy nhất đáp án đúng {ans} có chú thích thuật ngữ tiếng Anh trong ngoặc! "
+                f"Bắt buộc bổ sung thuật ngữ tiếng Anh cho cả 3 phương án nhiễu hoặc bỏ hoàn toàn để đồng nhất thuần Việt."
+            )
+        elif num_with_eng == 3 and not opts_with_eng.get(ans, False):
+            warnings.append(
+                f"Câu {idx}: [Bất đối xứng hình thức] Chỉ duy nhất đáp án đúng {ans} KHÔNG có chú thích tiếng Anh trong khi 3 phương án khác đều có."
+            )
+
         # --- NHÓM 2: CỜ CẢNH BÁO SƯ PHẠM & HÌNH THỨC (WARNINGS) ---
-        # 4. Length skew check (Cờ cảnh báo xem xét, không ép cứng)
+        # 5. Length skew check & Elaboration asymmetry
         if ans in opts and len(opts) == 4:
             ans_len = len(opts[ans])
             wrong_lens = [len(v) for k, v in opts.items() if k != ans]
@@ -76,6 +95,15 @@ class QuestionAuditor:
                 warnings.append(f"Câu {idx}: [Cảnh báo độ dài] Chênh lệch phương án lớn (Tỷ lệ {max_len/min_len:.1f}x). Cần xem xét nếu là câu lý thuyết.")
             elif avg_wrong > 0 and ans_len > 1.8 * avg_wrong and (ans_len - avg_wrong) > 35:
                 warnings.append(f"Câu {idx}: [Cảnh báo tâm lý] Đáp án đúng {ans} dài nổi bật hơn trung bình các phương án khác ({ans_len} vs {int(avg_wrong)} ký tự).")
+
+            # Check elaboration bias (thiên vị vế giải thích phụ ở đáp án đúng)
+            elaboration_markers = [' nhằm ', ' để ', ' và xác định ', ' với mục đích ', ' giúp doanh nghiệp ']
+            ans_has_elaboration = any(m in opts[ans].lower() for m in elaboration_markers)
+            others_elaboration_count = sum(any(m in opts[k].lower() for m in elaboration_markers) for k in opts if k != ans)
+            if ans_has_elaboration and others_elaboration_count == 0 and len(opts[ans]) > 1.25 * avg_wrong:
+                warnings.append(
+                    f"Câu {idx}: [Thiên vị giải thích] Đáp án đúng {ans} chứa vế giải thích mục đích phụ ('nhằm/để/và xác định...') trong khi các câu sai cộc lốc."
+                )
 
         # 5. Citation verification
         citation = q.get('citation')

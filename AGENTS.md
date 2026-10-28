@@ -1,4 +1,4 @@
-# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM (EXAM ARCHITECT v4.0)
+# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM (EXAM ARCHITECT v4.1)
 
 **Tên hệ thống:** Exam Architect  
 **Kho mã nguồn:** https://github.com/trungnt2006/exam-architect.git  
@@ -7,7 +7,7 @@
 
 ---
 
-## ⚡ HỆ THỐNG 4 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
+## ⚡ HỆ THỐNG 5 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
 
 Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực thi trọn gói mà không bắt người dùng điền form thủ công:
 
@@ -18,7 +18,7 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
    - Tự chia ma trận Bloom chuẩn đại học (~30% Nhận biết, ~40% Thông hiểu, ~30% Vận dụng).
    - Tự soạn thảo câu hỏi áp dụng linh hoạt 4 Format chuyên sâu, 10 Quy tắc Vàng và nguyên tắc Sibling Concepts.
    - Tự chạy script kiểm định `question_auditor.py` kiểm tra 2 tầng (Hard Errors & Cảnh báo trùng lặp).
-   - Tự xuất file Word chuẩn Azota 1-Click (`<u><b>A.</b></u>`, kèm lời giải chi tiết, kết thúc bằng `HẾT`).
+   - Tự xuất duy nhất file Word chuẩn Azota 1-Click (`<u><b>A.</b></u>`, kèm lời giải chi tiết, kết thúc bằng `HẾT`). Chỉ xuất file thi thử khi người dùng yêu cầu rõ ràng.
 
 2. **LỆNH HỌC HỎI TỪ TEST BANK:**
    👉 `"hấp thụ test bank [tên_file.pdf]"`
@@ -29,20 +29,28 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 3. **LỆNH KIỂM ĐỊNH ĐỀ THI:**
    👉 `"kiểm định đề [tên_file]"`
    - Chạy script đo lường định lượng tỷ lệ độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$ câu, tỷ lệ phân bố đáp án A/B/C/D, phát hiện trùng lặp thân câu (>85%) và phương án ngớ ngẩn.
-   - Xuất file báo cáo `Audit_Report.txt`.
+   - Hiển thị Báo cáo kiểm định trực tiếp trong chat (tuyệt đối không xuất file `Audit_Report.txt`).
 
 4. **LỆNH TỐI ƯU & CHUẨN HÓA AZOTA:**
    👉 `"tối ưu đề [tên_file]"`
    - Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, sửa phương án tấu hài thành học thuật.
-   - Đóng gói xuất file Word Azota 1-Click và Mock Exam cho sinh viên.
+   - Đóng gói xuất duy nhất file Word Azota 1-Click sạch đẹp (không tạo file Mock Exam trừ khi được yêu cầu).
+
+5. **LỆNH META-PROMPT HỌC TẬP TỪ KẾT QUẢ AZOTA (DIAGNOSTIC & NOTEBOOKLM META-PROMPT):**
+   👉 `"phân tích kết quả [text/file]"` hoặc `"meta prompt [azota]"` (hoặc tự động khi người dùng gửi kết quả thi Azota)
+   - Tự động quét lọc 100% các câu làm sai (`✗`).
+   - Phân loại lỗ hổng kiến thức theo chủ đề con.
+   - Xuất Báo cáo chẩn đoán nhanh (Điểm số, Tỷ lệ đúng, Chủ đề bị hổng).
+   - Sinh khối **Meta-Prompt sẵn sàng 1-Click** để người dùng dán trực tiếp vào **NotebookLM** (nơi đã nạp Slide/Giáo trình môn học) để NotebookLM giảng giải, so sánh đối ngẫu và củng cố kiến thức.
 
 ---
 
 ## I. NGUYÊN TẮC RA ĐỀ HỌC HỎI TỪ TEST BANK QUỐC TẾ
 
-1. **Phương án nhiễu cùng họ (Sibling Concepts):** Phương án sai phải là các thuật ngữ, khái niệm hoặc công thức cùng cấp bậc trong chính chương đó. Triệt tiêu các phương án sai ngớ ngẩn, tấu hài.
-2. **Thân câu hỏi đặt vấn đề (Functional Stem):** Tránh câu hỏi học vẹt cộc lốc; đặt câu hỏi vào bối cảnh doanh nghiệp cần ra quyết định hoặc giải quyết tình huống kỹ thuật.
-3. **Phân loại 3 nhóm môn học:**
+1. **Phương án nhiễu cùng họ (Sibling Concepts) & Cùng miền chuyên môn:** Phương án sai phải là các thuật ngữ, khái niệm hoặc công thức cùng cấp bậc trong chính chương đó. Triệt tiêu các phương án sai ngớ ngẩn, tấu hài hoặc lạc miền chuyên môn (như đưa phần cứng quạt làm mát, nông nghiệp phân bón, kế toán thủ công vào bài toán TMĐT/Kho dữ liệu).
+2. **Triệt tiêu bẫy bắt chữ / Lộ nghĩa đen (Anti-Clang Association):** Thân câu hỏi không dùng từ ngữ đời thường để "mớm nghĩa đen" cho đáp án (ví dụ thân câu dùng "mua cùng nhau", phương án lại ghi "giỏ hàng"). Nâng cấp thân câu hỏi sang ngôn ngữ học thuật (ví dụ "mối quan hệ đồng xuất hiện giữa các sản phẩm / co-occurrence").
+3. **Thân câu hỏi đặt vấn đề (Functional Stem):** Tránh câu hỏi học vẹt cộc lốc; đặt câu hỏi vào bối cảnh doanh nghiệp cần ra quyết định hoặc giải quyết tình huống kỹ thuật.
+4. **Phân loại 3 nhóm môn học:**
    - *Môn Tính toán (Toán kinh tế, Thống kê, Tài chính DN, Kế toán...):* Phải giải nháp độc lập; ghi rõ kỳ hạn, đơn vị và quy ước làm tròn số; bẫy sai số công thức.
    - *Môn Lý thuyết & Pháp lý (Luật ngân hàng, Quản trị, Marketing, Tiền tệ...):* Chống học vẹt, so sánh bản chất và giải quyết tình huống nghiệp vụ ngân hàng/doanh nghiệp.
    - *Môn Công nghệ & Dữ liệu (Kho dữ liệu, CSDL, HTTT, An toàn bảo mật...):* Kiến trúc, đánh đổi giải pháp (trade-off), bẫy ngoại lệ kỹ thuật.
@@ -101,8 +109,11 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 
 ## V. HỆ THỐNG 10 QUY TẮC VÀNG THIẾT KẾ CÂU HỎI
 
-1. **Cân bằng độ dài (Equal Length Rule):** Tỷ lệ ký tự phương án dài nhất / ngắn nhất $\le 2.2$. Triệt tiêu mẹo *"dài nhất là đúng"*.
-2. **Đồng nhất cấu trúc ngữ pháp:** Cả 4 phương án cùng loại từ (cùng cụm danh từ, hoặc cùng bắt đầu bằng một động từ).
+1. **Cân bằng độ dài (Equal Length Rule):** Tỷ lệ ký tự phương án dài nhất / ngắn nhất $\le 2.0$. Tuyệt đối không để phương án đúng dài vượt trội kèm giải thích lê thê trong khi các câu sai cộc lốc.
+2. **Đồng nhất cấu trúc & Đối xứng chú thích thuật ngữ (Structural & Notational Symmetry):**
+   - Cả 4 phương án cùng loại từ (cùng cụm danh từ, hoặc cùng bắt đầu bằng một động từ).
+   - **Quy tắc Đối xứng Chú thích Tiếng Anh:** Nếu phương án đúng có mở ngoặc thuật ngữ tiếng Anh `(English Term)` thì **bắt buộc cả 3 phương án nhiễu cũng phải có chú thích tiếng Anh tương ứng**. Nếu là câu thuần Việt thì **100% cả 4 phương án dùng thuần Việt**, tuyệt đối không để duy nhất câu đúng có tiếng Anh.
+   - **Quy tắc Chống thiên vị diễn giải (No Elaboration Bias):** Phương án đúng không được "kèm vế giải thích phụ" (`...nhằm mục đích... và xác định...`) nếu các câu sai không có.
 3. **Kiểm soát phương án tổng hợp & Bẫy ngược (Smart Distractors & Reverse Traps):** Tiết chế tần suất *"Tất cả đều đúng/sai"* ($\le 5\%-8\%$ số câu). Khuyến khích cài cắm làm **phương án nhiễu** để bẫy thí sinh có thói quen đoán mò.
 4. **Hoán vị ngẫu nhiên A/B/C/D:** Tỷ lệ phân bố ~25% cho mỗi phương án, không lặp $\ge 3$ câu liên tiếp cùng 1 đáp án.
 5. **Tình huống nghiệp vụ thực tế:** Đưa bài toán ngân hàng, tài chính, doanh nghiệp cụ thể vào câu hỏi.
@@ -117,14 +128,20 @@ Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắ
 ## VI. QUY CHUẨN XUẤT BẢN AZOTA 1-CLICK (.DOCX)
 - Tiêu đề câu: `Câu X: [Nội dung]` (in đậm `Câu X: `).
 - Đáp án đúng: Gạch chân và in đậm chữ cái phương án (`<u><b>A.</b></u>`).
-- Lời giải: Có khối `Lời giải:\nChọn X.\n[Giải thích chi tiết & phân tích bẫy thi]`.
+- Lời giải: Có khối `Lời giải:\nChọn X.\n[Giải thích chi tiết & phân tích bẫy thi]\n📌 [Metadata: Nguồn: ... | Mức độ: ... | Chủ đề: ...]`.
+- **Nguyên tắc Tinh gọn & Chuẩn thẩm mỹ (Clean Deliverables & Visual Standards):**
+  - Mặc định **CHỈ XUẤT BẢN DUY NHẤT 1 FILE WORD CHUẨN AZOTA:** `De_..._Azota_Chuan.docx`.
+  - File đề thi thử không đáp án (`De_Thi_Thu_Mock_Exam_...docx`): **CHỈ XUẤT KHI NGƯỜI DÙNG YÊU CẦU CỤ THỂ**.
+  - Đầu trang tinh gọn: Không chèn bảng đặc tả đề thi to/rườm rà ở đầu trang.
+  - Metadata trong Lời giải tinh gọn & chuyên môn: Chỉ hiển thị `Nguồn: [Tên tài liệu/Slide], Trang [X]`, `Mức độ: [Bloom]`, `Chủ đề: [Sub-topic]` (không chèn tên bộ môn lặp thừa, không để lộ thuật ngữ kỹ thuật Agent).
+  - Báo cáo kiểm định: Hiển thị trực tiếp trong phản hồi chat, **TUYỆT ĐỐI KHÔNG** tự tiện tạo hay lưu các file phụ trợ trung gian (`.json`, `.md`, `.txt`) ra thư mục làm việc của người dùng.
 - Kết thúc đề: Dòng **`HẾT`** in đậm căn giữa. Tuyệt đối **KHÔNG** có bảng đáp án thừa ở cuối file để tránh lỗi nuốt chữ của trình soạn thảo Azota.
 
 ---
 
 ## VII. HỆ THỐNG KIỂM ĐỊNH 2 TẦNG & MINH BẠCH HỌC THUẬT
 1. **Tầng 1 — Kiểm tra Kỹ thuật & Logic dữ liệu (Hard Errors):**
-   - Chặn đứng các lỗi: Thiếu phương án, đáp án ngoài A/B/C/D, trùng lặp phương án, mâu thuẫn giữa Đáp án và Lời giải, trùng lặp hoàn toàn thân câu hỏi, phương án ngớ ngẩn (tấu hài).
+   - Chặn đứng các lỗi: Thiếu phương án, đáp án ngoài A/B/C/D, trùng lặp phương án, mâu thuẫn giữa Đáp án và Lời giải, trùng lặp hoàn toàn thân câu hỏi, phương án ngớ ngẩn (tấu hài, lạc miền chuyên môn), **bất đối xứng chú thích thuật ngữ tiếng Anh** (chỉ câu đúng có tiếng Anh).
 2. **Tầng 2 — Cờ Cảnh báo Sư phạm & Hình thức (Heuristic Warnings):**
    - Không ép cứng máy móc: Cảnh báo chênh lệch độ dài lớn ($Ratio > 2.5$), trùng lặp từ ngữ thân câu (>85%) hoặc lệch phân bố A/B/C/D nhằm gợi ý người tạo đề xem xét. Với câu tính toán (đáp án số ngắn) hoặc câu định nghĩa, chênh lệch độ dài là tự nhiên và hợp lệ.
 3. **Minh bạch Học thuật (Academic Disclaimer):**

@@ -1,5 +1,13 @@
 # CHANGELOG - EXAM ARCHITECT
 
+## [4.2.0] - 2026-10-29
+### Added
+- **Lệnh Meta-Prompt cho NotebookLM (Quick Command #5):** Tự động phân tích kết quả thi Azota, lọc 100% các câu làm sai (`✗`), phân loại lỗ hổng kiến thức và sinh Meta-Prompt chuẩn hóa sẵn sàng 1-Click để dán vào NotebookLM nhờ đối chiếu Slide/Giáo trình nguồn giảng giải bản chất lý thuyết, giải mã bẫy thi và đúc kết quy tắc ghi nhớ logic.
+- **Bộ công cụ `azota_diagnostic.py`:** Trích xuất kết quả thi Azota và tự động sinh Meta-Prompt.
+- **Quy tắc Đối xứng Chú thích Tiếng Anh (English Term Symmetry):** Chặn đứng lỗi thiên vị hình thức (chỉ duy nhất câu đúng có tiếng Anh) hoặc ngược lại; nếu dùng tiếng Anh thì cả 4 phương án đều phải có, nếu thuần Việt thì cả 4 phương án dùng thuần Việt.
+- **Quy tắc Chống thiên vị diễn giải (No Elaboration Bias) & Chống bắt chữ (Anti-Clang Association):** Thân câu hỏi không dùng từ đời thường để mớm nghĩa đen cho đáp án; phương án đúng không được kèm vế giải thích phụ kéo dài nếu các câu sai không có.
+- **Nâng cấp `question_auditor.py`:** Tự động phát hiện lỗi bất đối xứng chú thích tiếng Anh (`English Term Asymmetry Check`), lỗi thiên vị vế giải thích (`Elaboration Bias`), và mở rộng bộ lọc từ khóa nhiễu ngớ ngẩn/lạc miền kiến thức.
+
 ## [4.1.0] - 2026-10-26
 ### Added
 - **Định hướng chuyên sâu 100% vào Ra đề (Question Authoring):** Loại bỏ tính năng ngoài lề, tập trung hoàn toàn vào kỹ nghệ thiết kế và biên soạn đề thi đại học.
