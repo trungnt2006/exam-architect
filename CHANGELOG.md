@@ -1,5 +1,16 @@
 # CHANGELOG - EXAM ARCHITECT
 
+## [4.3.0] - 2026-10-31
+### Added
+- **Chuẩn hóa HUB Exam Standards v4.3 & 5 Điều Răn Thép:**
+  1. *Nguyên tắc Song hành Cú pháp (Grammatical Parallelism):* Cả 4 phương án bắt buộc cùng một kiểu câu và cùng từ loại mở đầu; tính toán định lượng hệ số biến thiên độ dài ($CV \le 0.28$).
+  2. *Đồng nhất Hệ quy chiếu Bản thể (Homogeneous Domain):* 100% phương án sai phải thuộc cùng một phạm trù chuyên môn học thuật; loại bỏ triệt để các hành vi vật lý đời thường, thủ công thô sơ.
+  3. *Cơ chế 4 Kỹ thuật Tạo sai Khách quan:* Đảo chiều quan hệ (Inversion), Đánh tráo khái niệm song sinh (Sibling Swapping), Thiếu điều kiện ràng buộc (Missing Prerequisite), Xáo trộn trình tự (Displacement).
+  4. *Chuỗi Mắt xích & Quy trình Đồng dạng:* Nếu phương án có cấu trúc mũi tên quy trình (`->`), bắt buộc cả 4 phương án đều phải có cấu trúc mũi tên tương ứng.
+  5. *Cách ly Chống Lây nhiễm AI Slop (Anti-Contamination Boundary):* Mọi đề thi Word Azota lưu vào `Azota/`; khi quét tài nguyên nguồn để làm đề, TUYỆT ĐỐI LOẠI TRỪ 100% thư mục `Azota/` để chống hiện tượng Model Autophagy.
+- **Ràng buộc Chia đợt Bắt buộc (Mandatory Batching - Max 25 câu/lần):** Khi sinh đề số lượng lớn (40-50 câu), bắt buộc chia làm 2 đợt để bảo toàn token suy luận và chất lượng phương án nhiễu.
+- **Nâng cấp toàn diện `question_auditor.py`:** Mở rộng danh sách đen từ khóa tấu hài/đời thường (`lau bụi`, `cửa sổ kính`, `thùng rác tái chế`, `từ bàn phím`, `nhập liệu thủ công`, `bằng tay`...), bổ sung kiểm tra từ ngữ cực đoan (`luôn luôn`, `chỉ có`, `hoàn toàn không`...), kiểm tra tính song hành quy trình và tính toán CV chuẩn xác.
+
 ## [4.2.0] - 2026-10-29
 ### Added
 - **Lệnh Meta-Prompt cho NotebookLM (Quick Command #5):** Tự động phân tích kết quả thi Azota, lọc 100% các câu làm sai (`✗`), phân loại lỗ hổng kiến thức và sinh Meta-Prompt chuẩn hóa sẵn sàng 1-Click để dán vào NotebookLM nhờ đối chiếu Slide/Giáo trình nguồn giảng giải bản chất lý thuyết, giải mã bẫy thi và đúc kết quy tắc ghi nhớ logic.

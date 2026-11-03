@@ -13,7 +13,9 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 
 1. **LỆNH TẠO ĐỀ:**
    👉 `"tạo đề [số câu] câu chương [X] môn này"` (hoặc `"làm đề thi thử 40 câu môn này"`)
-   - Tự động nhận diện môn học, tài liệu DCMH, Slide chương tương ứng.
+   - **BƯỚC 0 BẮT BUỘC:** Quét đệ quy toàn bộ thư mục môn học, đặc biệt tìm các thư mục con `TN/`, `Trac_nghiem/`, `TestBank/`, `Giáo trình/`, `Slide/`.
+   - **RÀNG BUỘC NGUỒN PHÔI THỰC CHIẾN:** Nếu phát hiện có file Trắc nghiệm mẫu / Test Bank, **BẮT BUỘC lấy 50% – 60% câu hỏi cốt lõi từ kho trắc nghiệm mẫu này làm khung**. Tuyệt đối CẤM hành vi lười biếng chỉ mở mỗi Slide dò từng trang đặt câu hỏi làm lệch 100% đề thi vào các số liệu vụn vặt của slide.
+   - Dùng Giáo trình chính để kiểm chứng (Fact-check) và sửa lại các câu bị khoanh sai trên mạng; dùng Slide để đồng bộ thuật ngữ chấm thi của trường.
    - Tự phân rã chủ đề con (Sub-topics) và chia hạn ngạch (tối đa 25%/chủ đề).
    - Tự chia ma trận Bloom chuẩn đại học (~30% Nhận biết, ~40% Thông hiểu, ~30% Vận dụng).
    - Tự soạn thảo câu hỏi áp dụng linh hoạt 4 Format chuyên sâu, 10 Quy tắc Vàng và nguyên tắc Sibling Concepts.
@@ -57,21 +59,25 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 
 ---
 
-## II. PHỐI HỢP NGUỒN TÀI NGUYÊN 3 LỚP & MỞ RỘNG GIÁO TRÌNH CÓ KIỂM SOÁT (CONTROLLED EXPANSION)
+## II. QUY TRÌNH PHỐI HỢP TÀI NGUYÊN 3 TẦNG: GIÁO TRÌNH -> TN MẪU -> SLIDE
 
-Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắt của DCMH! Khai thác sức mạnh phối hợp của 3 tầng tài liệu:
+Quy trình thẩm định và lấy dữ liệu chuẩn học thuật vận hành tuần tự qua 3 tầng (vì trắc nghiệm mẫu trên mạng thường có nhiều câu bị khoanh sai, mập mờ hoặc cẩu thả):
 
-1. **Tầng 1 — Định vị Khung & Ma trận (Đề cương môn học - DCMH):**
-   - Xác định chuẩn đầu ra (CLO), danh mục các chương, hình thức thi và ma trận Bloom chuẩn.
-2. **Tầng 2 — Trọng tâm bài giảng trên lớp (Slide bài giảng):**
-   - Bắt trọn các định nghĩa, bảng so sánh đối ngẫu và lưu ý nghiệp vụ được giảng viên trực tiếp giảng dạy.
-3. **Tầng 3 — Đào sâu & Mở rộng có kiểm soát (Giáo trình chính & Test Bank quốc tế - Textbooks):**
-   - **Khuyến khích mở rộng có kiểm soát:** Chủ động khai thác sâu vào các chương tương ứng trong Giáo trình chính (Pearson, McGraw-Hill, Wiley, Giáo trình trường...) để lấy thêm cơ chế kỹ thuật chi tiết, bài toán tình huống nâng cao và các phân tích bản chất nhằm phân hóa điểm 8–10.
-   - **Tận dụng Test Bank & Review Questions quốc tế:** Khai thác tối đa các câu hỏi trắc nghiệm kinh điển cuối mỗi chương của giáo trình quốc tế, bản địa hóa sang tiếng Việt tự nhiên kèm thuật ngữ gốc tiếng Anh trong ngoặc đơn.
-   - **Ranh giới "Trong tầm kiểm soát" (Controlled Bounds):**
-     + *Bám rễ từ chương học:* Kiến thức mở rộng phải bắt nguồn từ chủ đề của chương đang học trong DCMH, TUYỆT ĐỐI KHÔNG mở rộng lan man sang môn học khác.
-     + *Phục vụ phân hóa tư duy (Bloom 3-4):* Chỉ mở rộng vào các tình huống thực tiễn, đánh đổi kiến trúc (trade-off) và cơ chế chuyên sâu; không hỏi mẹo vặt ngoài phạm vi.
-     + *Bắt buộc có Citation dẫn chứng rõ ràng:* Mọi câu hỏi mở rộng bắt buộc phải ghi rõ metadata trong Lời giải: `Tên giáo trình`, `Chương mấy`, `Trang cụ thể`.
+```mermaid
+flowchart LR
+    A["Tầng 1: GIÁO TRÌNH CHÍNH<br/>(Tri thức gốc & Chuẩn học thuật)"] --> B["Tầng 2: TRẮC NGHIỆM MẪU<br/>(Khung câu hỏi & Bẫy thi thực chiến)"]
+    B --> C["Tầng 3: SLIDE BÀI GIẢNG<br/>(Bộ lọc trọng tâm & Thuật ngữ của GV)"]
+    C --> D["ĐỀ THI HOÀN CHỈNH<br/>(Chuẩn xác, Sát đề, Đầy đủ lời giải)"]
+```
+
+1. **Tầng 1 — Giáo trình chính (Textbooks - Nền tảng học thuật & Chân lý cốt lõi):**
+   - Khởi nguồn từ giáo trình chuẩn (Inmon, Kimball, Sharda, Ponniah...) để định hình bản chất lý thuyết, cơ chế kỹ thuật sâu, công thức và quy trình chuẩn xác nhất mà không bị tam sao thất bản.
+2. **Tầng 2 — Trắc nghiệm mẫu / Test Bank (Khung câu hỏi & Bẫy thi thực tế):**
+   - Khai thác các bài toán trắc nghiệm thực chiến mà giảng viên thường sử dụng.
+   - **Cơ chế Thẩm định & Sửa lỗi (Fact-checking):** Dùng Giáo trình ở Tầng 1 để kiểm tra lại toàn bộ đáp án của trắc nghiệm mẫu (phát hiện và sửa triệt để các câu bị khoanh sai trên Studocu/mạng), đồng thời viết thêm Lời giải thích chi tiết.
+   - **Bắt buộc xuất Báo cáo Hiệu đính Đáp án (Correction Audit Report):** Tuyệt đối KHÔNG âm thầm sửa đáp án! Khi phát hiện một câu trong file mẫu bị khoanh sai, Agent BẮT BUỘC phải hiển thị Báo cáo Hiệu đính trực tiếp trong chat, chỉ rõ: (1) Đáp án cũ trong file mẫu, (2) Đáp án mới chuẩn xác, (3) Lý do & Trích dẫn bằng chứng nguyên văn từ Giáo trình (tên sách, chương, trang) hoặc Slide.
+3. **Tầng 3 — Slide bài giảng của Giảng viên (Bộ lọc trọng tâm & Đồng bộ thuật ngữ):**
+   - Dùng Slide làm bộ lọc cuối cùng: Đối soát xem giảng viên nhấn mạnh phần nào trên lớp, cách dịch thuật ngữ tiếng Việt của thầy cô ra sao để đáp án chính thức bám sát 100% phong cách chấm thi của trường.
 
 - **Thứ bậc ưu tiên khi tài liệu mâu thuẫn:**
   $$\text{Slide bài giảng của GV trực tiếp dạy} > \text{Đề cương chi tiết (DCMH)} > \text{Giáo trình chính (Textbook)} > \text{Tài liệu tham khảo trên mạng}$$

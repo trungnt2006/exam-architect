@@ -21,7 +21,7 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 
 | Lệnh người dùng | Ví dụ mẫu | Tác vụ Agent tự động thực hiện |
 | :--- | :--- | :--- |
-| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | Tự quét tài liệu (DCMH, Slide, Sách) $\rightarrow$ Phân rã chủ đề con $\rightarrow$ Chia ma trận Bloom $\rightarrow$ Soạn câu hỏi theo 4 format & 10 Quy tắc Vàng $\rightarrow$ Chạy kiểm định 2 tầng $\rightarrow$ Xuất duy nhất 1 file Word Azota 1-Click (chỉ xuất file thi thử khi có yêu cầu). |
+| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | **BƯỚC 0 BẮT BUỘC:** Quét đệ quy thư mục môn học (`TN/`, `Giáo trình/`, `Slide/`).<br/>- **CÁCH LY CHỐNG LÂY NHIỄM AI SLOP:** Mọi file đề thi Word Azota hoàn chỉnh **BẮT BUỘC LƯU VÀO FOLDER `Azota/`**. Khi quét tài nguyên để làm đề, **TUYỆT ĐỐI KHÔNG ĐƯỢC QUÉT VÀ LOẠI TRỪ 100% THƯ MỤC `Azota/`** để chống hiện tượng AI tự học lại sản phẩm của chính mình (Model Autophagy / AI Inbreeding).<br/>- **RÀNG BUỘC CHIA ĐỢT (MANDATORY BATCHING - MAX 25 CÂU/LẦN):** Khi người dùng yêu cầu 40-50 câu, BẮT BUỘC chia làm 2 đợt (Đợt 1: 1-25; Đợt 2: 26-50...). CẤM TUYỆT ĐỐI dump cả 50 câu trong một lượt khiến token suy luận cạn kiệt sinh ra phương án ngớ ngẩn.<br/>- **Nếu có file Trắc nghiệm mẫu / Test Bank:** BẮT BUỘC lấy 50% – 60% câu hỏi làm phôi thực chiến; dùng Giáo trình để sửa đáp án sai (fact-check) và dùng Slide để đồng bộ thuật ngữ.<br/>- **Tuyệt đối cấm:** Lười biếng chỉ mở mỗi Slide dò từng trang đặt câu hỏi làm lệch 100% đề vào slide.<br/>- Tự chia ma trận Bloom, 4 format & 10 Quy tắc Vàng (Sibling Concepts), **BẮT BUỘC CHẠY question_auditor.py ĐẠT PASS 100%** trước khi xuất duy nhất 1 file Word Azota 1-Click. |
 | **2. Học hỏi từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank quốc tế $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng cao chất lượng câu hỏi cho các lần tạo đề sau. |
 | **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, kiểm tra trùng lặp thân câu, bẫy tấu hài $\rightarrow$ Hiển thị Báo cáo kiểm định trực tiếp trong chat (tuyệt đối không xuất file `.txt`). |
 | **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn $\rightarrow$ Xuất file Word Azota 1-Click duy nhất (không tạo file Mock Exam trừ khi được yêu cầu). |
@@ -31,7 +31,14 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 
 ## 🏛️ PHONG CÁCH RA ĐỀ HỌC HỎI TỪ TEST BANK QUỐC TẾ
 
-### 1. Nguyên tắc "Phương án nhiễu cùng họ" (Sibling Concepts Rule)
+### 1. Nguyên tắc "Phương án nhiễu cùng họ" (Sibling Concepts) & "Song hành Cú pháp" (Parallelism)
+- **Đồng nhất Hệ quy chiếu (Homogeneous Domain):** 100% phương án sai phải thuộc cùng một phạm trù chuyên môn học thuật với đáp án đúng (tài chính, ERP, luật, thuật toán...). Cấm tuyệt đối đưa các hành vi vật lý/thủ công đời thường (gõ bàn phím, tắt nguồn, lau chùi, phát loa, dán giấy).
+- **Tính Song hành Cú pháp (Grammatical Parallelism):** Cả 4 phương án trong một câu BẮT BUỘC phải cùng một kiểu câu và cùng từ loại mở đầu (cùng bắt đầu bằng Động từ hành động, cùng là Cụm danh từ, hoặc cùng là Định nghĩa giải thích có Chủ-Vị). Triệt tiêu hoàn toàn lỗi phương án đúng dài ngoằng giải thích cặn kẽ còn 3 câu sai cộc lốc.
+- **4 Cơ chế tạo sai khách quan (thay vì tự bịa):**
+  1. *Đảo chiều quan hệ (Inversion):* Lấy nguyên lý đúng đảo ngược logic (tăng thành giảm, thuận thành nghịch).
+  2. *Đánh tráo khái niệm song sinh (Sibling Swapping):* Lấy đặc tính của Khái niệm X gán cho Khái niệm Y.
+  3. *Thiếu điều kiện ràng buộc (Missing Prerequisite):* Viết mệnh đề đúng nhưng lược bỏ điều kiện loại trừ.
+  4. *Xáo trộn trình tự (Displacement):* Tráo đổi thứ tự các bước trong quy trình chuẩn.
 - **Tuyệt đối không bịa phương án sai ngớ ngẩn, tấu hài:** Phương án sai phải là các thuật ngữ, khái niệm, hoặc công thức **cùng bậc phân cấp học thuật** và **cùng miền chuyên môn** nằm trong chính chương đó (cấm đưa khái niệm nông nghiệp, phần cứng tản nhiệt, kế toán thủ công vào bài toán TMĐT/Kho dữ liệu).
 - **Triệt tiêu bẫy bắt chữ / Lộ nghĩa đen (Anti-Clang Association):** Thân câu hỏi không dùng các từ ngữ đời thường để mớm nghĩa đen cho đáp án (ví dụ: thân câu dùng chữ *"mua cùng nhau"*, phương án ghi *"giỏ hàng"*). Thân câu phải được nâng cấp lên thuật ngữ học thuật (ví dụ: *"mối quan hệ đồng xuất hiện (co-occurrence) giữa các danh mục sản phẩm"*).
 - *Ví dụ minh họa từ Test Bank Pearson:* Khi hỏi về đặc tính dữ liệu *"Granularity"*, cả 3 phương án nhiễu phải là các đặc tính dữ liệu anh em cùng chương: *Data reliability*, *Data accessibility*, *Data richness*. Thí sinh đọc vào thấy tất cả đều quen thuộc, chỉ người hiểu bản chất mới chọn đúng!
@@ -45,19 +52,25 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 - **Môn Lý thuyết & Pháp lý (Luật ngân hàng, Quản trị, Marketing, Tiền tệ...):** Chống học vẹt, so sánh bản chất và giải quyết tình huống nghiệp vụ ngân hàng/doanh nghiệp.
 - **Môn Công nghệ & Dữ liệu (Kho dữ liệu, CSDL, HTTT, An toàn bảo mật...):** Tập trung vào kiến trúc hệ thống, đánh đổi giải pháp (trade-off) và bẫy ngoại lệ kỹ thuật.
 
-### 4. Phối hợp tài nguyên 3 lớp & Mở rộng Giáo trình có kiểm soát (Controlled Expansion)
-Tuyệt đối không gò bó đề thi trong các gạch đầu dòng tóm tắt của DCMH! Khai thác sức mạnh phối hợp của 3 tầng tài liệu:
-1. **Tầng 1 — Định vị Khung & Ma trận (Đề cương môn học - DCMH):**
-   - Xác định chuẩn đầu ra (CLO), danh mục các chương học, thời lượng làm bài và ma trận mức độ nhận thức Bloom.
-2. **Tầng 2 — Trọng tâm bài giảng trên lớp (Slide bài giảng):**
-   - Bắt trọn các định nghĩa chuẩn, bảng so sánh đối ngẫu và các lưu ý nghiệp vụ được giảng viên trực tiếp giảng dạy trên lớp.
-3. **Tầng 3 — Đào sâu & Mở rộng có kiểm soát (Giáo trình chính & Test Bank quốc tế - Textbooks):**
-   - **Khuyến khích mở rộng có kiểm soát:** Không dừng lại ở các gạch đầu dòng ngắn của Slide, Agent chủ động khai thác sâu vào các chương tương ứng trong Giáo trình chính (Pearson, McGraw-Hill, Wiley, Giáo trình trường...) để lấy thêm cơ chế kỹ thuật chi tiết, phân tích bản chất và bài toán tình huống nâng cao nhằm phân hóa điểm 8–10.
-   - **Tận dụng Test Bank & Review Questions quốc tế:** Khai thác tối đa các câu hỏi trắc nghiệm kinh điển cuối mỗi chương của giáo trình quốc tế, bản địa hóa sang tiếng Việt tự nhiên kèm thuật ngữ gốc tiếng Anh trong ngoặc đơn.
-   - **Ranh giới "Trong tầm kiểm soát" (Controlled Bounds):**
-     - *Bám rễ từ chương học:* Kiến thức mở rộng phải bắt nguồn từ chủ đề của chương đang học trong DCMH; TUYỆT ĐỐI KHÔNG mở rộng lan man sang môn học khác.
-     - *Phục vụ phân hóa tư duy (Bloom 3-4):* Chỉ mở rộng vào các tình huống thực tiễn, đánh đổi kiến trúc (trade-off) và cơ chế chuyên sâu; không hỏi mẹo vặt đánh đố vô nghĩa.
-     - *Bắt buộc có Citation dẫn chứng rõ ràng:* Mọi câu hỏi mở rộng bắt buộc phải ghi rõ metadata trong Lời giải: `Tên giáo trình`, `Chương mấy`, `Mục / Trang cụ thể`.
+### 4. Quy trình Phối hợp Tài nguyên 3 Tầng: Giáo trình $\rightarrow$ TN mẫu $\rightarrow$ Slide
+
+Quy trình thẩm định và lấy dữ liệu chuẩn học thuật vận hành tuần tự qua 3 tầng (vì trắc nghiệm mẫu trên mạng thường có nhiều đáp án sai, mập mờ hoặc cẩu thả):
+
+```mermaid
+flowchart LR
+    A["Tầng 1: GIÁO TRÌNH CHÍNH<br/>(Tri thức gốc & Chuẩn học thuật)"] --> B["Tầng 2: TRẮC NGHIỆM MẪU<br/>(Khung câu hỏi & Bẫy thi thực chiến)"]
+    B --> C["Tầng 3: SLIDE BÀI GIẢNG<br/>(Bộ lọc trọng tâm & Thuật ngữ của GV)"]
+    C --> D["ĐỀ THI HOÀN CHỈNH<br/>(Chuẩn xác, Sát đề, Đầy đủ lời giải)"]
+```
+
+1. **Tầng 1 — Giáo trình chính (Textbooks - Nền tảng học thuật & Chân lý cốt lõi):**
+   - Lấy từ các giáo trình kinh điển (Inmon, Kimball, Sharda, Ponniah...) để định hình bản chất lý thuyết, cơ chế kỹ thuật sâu, quy trình chuẩn mà không bị tam sao thất bản.
+2. **Tầng 2 — Trắc nghiệm mẫu / Test Bank (Khung câu hỏi & Bẫy thi thực tế):**
+   - Khai thác các bài toán trắc nghiệm thực chiến mà giảng viên thường sử dụng.
+   - **Cơ chế Thẩm định & Sửa lỗi (Fact-checking):** Dùng Giáo trình ở Tầng 1 để kiểm tra lại toàn bộ đáp án của trắc nghiệm mẫu (phát hiện và sửa triệt để các câu bị khoanh sai trên Studocu/mạng), đồng thời viết thêm Lời giải thích chi tiết.
+   - **Bắt buộc xuất Báo cáo Hiệu đính Đáp án (Correction Audit Report):** Tuyệt đối KHÔNG âm thầm sửa đáp án! Khi phát hiện một câu trong file mẫu bị khoanh sai, Agent BẮT BUỘC phải hiển thị Báo cáo Hiệu đính trực tiếp trong chat, chỉ rõ: (1) Đáp án cũ trong file mẫu, (2) Đáp án mới chuẩn xác, (3) Lý do & Trích dẫn bằng chứng nguyên văn từ Giáo trình (tên sách, chương, trang) hoặc Slide.
+3. **Tầng 3 — Slide bài giảng của Giảng viên (Bộ lọc trọng tâm & Đồng bộ thuật ngữ):**
+   - Dùng Slide làm bộ lọc cuối cùng: Đối soát xem giảng viên nhấn mạnh phần nào trên lớp, cách dịch thuật ngữ tiếng Việt của thầy cô ra sao để đáp án chính thức bám sát 100% phong cách chấm thi của trường.
 
 - **Thứ bậc ưu tiên khi tài liệu mâu thuẫn:**
   $$\text{Slide bài giảng của GV trực tiếp dạy} > \text{Đề cương chi tiết (DCMH)} > \text{Giáo trình chính (Textbook)} > \text{Tài liệu tham khảo trên mạng}$$
