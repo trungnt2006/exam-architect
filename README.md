@@ -1,15 +1,15 @@
-# 🏛️ EXAM ARCHITECT (v4.0)
+# 🏛️ EXAM ARCHITECT (v4.3)
 > **AI-Powered Academic Exam Authoring, Auditing & 1-Click Azota Packaging Engine**
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-exam--architect-blue?logo=github)](https://github.com/trungnt2006/exam-architect.git)
-[![Version](https://img.shields.io/badge/version-4.1-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.3.0-green.svg)](CHANGELOG.md)
 [![Standard](https://img.shields.io/badge/Academic%20Style-Pearson%20%7C%20HUB-orange.svg)](#phong-cách-ra-đề-học-hỏi-từ-test-bank-quốc-tế)
 
 **Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phong cách ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tích hợp 4 format câu hỏi chuyên sâu, thuật toán phân rã chủ đề con chống trùng lặp kiến thức và xuất file Word chuẩn **Azota 1-Click**.
 
 ---
 
-## ⚡ HỆ THỐNG 4 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
+## ⚡ HỆ THỐNG 5 LỆNH VẬN HÀNH 1-CHẠM (QUICK COMMANDS)
 
 Người dùng chỉ cần đưa ra một câu lệnh ngắn gọn, Agent sẽ tự động kích hoạt toàn bộ quy trình:
 
@@ -30,6 +30,11 @@ Người dùng chỉ cần đưa ra một câu lệnh ngắn gọn, Agent sẽ t
 4. TỐI ƯU & CHUẨN HÓA AZOTA:
    👉 "tối ưu đề [tên_file]"
    (Cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án ngớ ngẩn -> Xuất Word Azota)
+
+5. META-PROMPT CHO NOTEBOOKLM:
+   👉 "meta prompt azota"
+   👉 "phân tích kết quả này"
+   (Lọc câu sai từ Azota -> Phân rã lỗ hổng kiến thức -> Xuất khối Meta-Prompt chuẩn hóa để NotebookLM giảng lại và giải mã bẫy thi)
 ```
 
 ---
