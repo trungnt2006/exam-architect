@@ -1,11 +1,11 @@
-# 🏛️ EXAM ARCHITECT (v4.3)
+# 🏛️ EXAM ARCHITECT (v4.4)
 > **AI-Powered Academic Exam Authoring, Auditing & 1-Click Azota Packaging Engine**
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-exam--architect-blue?logo=github)](https://github.com/trungnt2006/exam-architect.git)
-[![Version](https://img.shields.io/badge/version-4.3.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.4.0-green.svg)](CHANGELOG.md)
 [![Standard](https://img.shields.io/badge/Academic%20Style-Pearson%20%7C%20HUB-orange.svg)](#phong-cách-ra-đề-học-hỏi-từ-test-bank-quốc-tế)
 
-**Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phong cách ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tích hợp 4 format câu hỏi chuyên sâu, thuật toán phân rã chủ đề con chống trùng lặp kiến thức và xuất file Word chuẩn **Azota 1-Click**.
+**Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phong cách ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tích hợp 4 format câu hỏi chuyên sâu, thuật toán phân rã chủ đề con chống trùng lặp kiến thức, kiểm định chống tự giải nghĩa lộ bài và xuất file Word chuẩn **Azota 1-Click**.
 
 ---
 
@@ -25,11 +25,11 @@ Người dùng chỉ cần đưa ra một câu lệnh ngắn gọn, Agent sẽ t
 
 3. KIỂM ĐỊNH ĐỀ THI:
    👉 "kiểm định đề [tên_file]"
-   (Đo độ dài Ratio, chuỗi lặp, phân bố A/B/C/D, kiểm tra trùng lặp thân câu >85%, phát hiện bẫy ngớ ngẩn -> Xuất Audit_Report.txt)
+   (Đo độ dài Ratio, chuỗi lặp, phân bố A/B/C/D, kiểm tra trùng lặp thân câu >85%, phát hiện bẫy ngớ ngẩn & lỗi phương án tự giải nghĩa -> Báo cáo trực tiếp)
 
 4. TỐI ƯU & CHUẨN HÓA AZOTA:
    👉 "tối ưu đề [tên_file]"
-   (Cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án ngớ ngẩn -> Xuất Word Azota)
+   (Cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án ngớ ngẩn, cắt bỏ đuôi tự giải nghĩa thừa -> Xuất Word Azota)
 
 5. META-PROMPT CHO NOTEBOOKLM:
    👉 "meta prompt azota"
@@ -67,8 +67,10 @@ Người dùng chỉ cần đưa ra một câu lệnh ngắn gọn, Agent sẽ t
 ## 🏛️ ĐIỂM ĐẶC SẮC: HỌC HỎI PHONG CÁCH TỪ TEST BANK QUỐC TẾ
 
 - **Phương án nhiễu cùng họ (Sibling Concepts):** Phương án sai không bao giờ là bịa đặt ngớ ngẩn, mà bắt buộc phải là các khái niệm anh em cùng chương trong giáo trình. Thí sinh đọc vào thấy tất cả đều quen thuộc, chỉ người hiểu bản chất mới chọn đúng.
+- **Tách biệt Thuật ngữ & Định nghĩa — Cấm Phương án Tự giải nghĩa quá đà (No Self-Explaining Options):**
+  - Khi thân câu hỏi đã nêu định nghĩa/bản chất và hỏi tên thuật ngữ/khái niệm, các phương án A, B, C, D **chỉ được ghi tên thuật ngữ ngắn gọn** (ví dụ: `A. Hướng chủ đề (Subject-Oriented).`, `B. Tích hợp (Integrated).`), tuyệt đối cấm nối thêm đuôi giải thích ý nghĩa vào đằng sau tên thuật ngữ làm lộ đáp án trên mặt chữ. Toàn bộ giải thích phải đưa xuống phần `Lời giải:`.
 - **Thân câu hỏi đặt vấn đề (Functional Stems):** Triệt tiêu câu hỏi học vẹt "X là gì?"; đặt bài toán vào bối cảnh doanh nghiệp thực tế.
-- **Cân bằng độ dài hợp lý:** Rà soát chênh lệch ký tự giữa các phương án ($Ratio \le 2.2$) nhằm triệt tiêu mẹo thi *"đáp án dài nhất là đúng"*, đồng thời giữ độ ngắn tự nhiên cho câu tính toán và định nghĩa.
+- **Cân bằng độ dài hợp lý:** Rà soát chênh lệch ký tự giữa các phương án ($Ratio \le 2.2$) nhằm triệt tiêu mẹo thi *"đáp án dài nhất là đúng"*, đồng thời giữ độ ngắn tự nhiên cho câu tính toán và câu hỏi tên thuật ngữ.
 - **Cân bằng ngẫu nhiên A/B/C/D:** Tự động chia đều ~25% cho mỗi phương án, loại trừ chuỗi lặp $\ge 3$ câu liên tiếp.
 
 ---
@@ -83,7 +85,7 @@ exam-architect/
 ├── CHANGELOG.md                      # Lịch sử nâng cấp phiên bản
 ├── scripts/
 │   ├── exam_spec_builder.py          # Thuật toán phân bổ ma trận Hamilton-Hare 2D
-│   ├── question_auditor.py           # Bộ kiểm định 2 tầng độc lập (Hard Errors, Anti-Redundancy & Warnings)
+│   ├── question_auditor.py           # Bộ kiểm định 2 tầng độc lập (Hard Errors, Self-Explaining Tail Blocker & Warnings)
 │   ├── build_azota_exam.py           # Động cơ đóng gói xuất 3 chế độ (Mock, Master, Azota 1-Click)
 │   └── testbank_ingester.py          # Bộ hấp thụ tri thức Sibling Concepts từ Test Bank
 └── references/
