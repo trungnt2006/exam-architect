@@ -1,5 +1,16 @@
 # CHANGELOG - EXAM ARCHITECT
 
+## [4.5.0] - 2026-11-08
+### Added
+- **Quy tắc Cấm Trích dẫn Vị trí Kiến thức trong Thân câu hỏi (`SKILL.md`, `AGENTS.md`, `question_auditor.py`):**
+  - Cấm tuyệt đối việc đưa các cụm chỉ vị trí tài liệu như `(Slide Chương X, trang Y)`, `(Tài liệu Chương X, mục Y)`, `(Bài giảng Chương X)`, `(Ngân hàng câu hỏi - Câu Z)` vào trong thân câu hỏi (`question` / `stem`) hoặc phương án lựa chọn (`A, B, C, D`). Toàn bộ thông tin nguồn trích dẫn chỉ được phép đặt trong phần `Lời giải:` và `Metadata`.
+  - Bổ sung bộ lọc `loc_citation_re` ở **Tầng 1 (Hard Errors)** trong `question_auditor.py` để tự động chặn cứng nếu phát hiện trích dẫn vị trí kiến thức trong thân câu hỏi.
+- **Tối ưu Tỷ lệ Phối hợp Nguồn phôi (20%–30% Test Bank + 70%–80% Câu hỏi Mới) & Cơ chế Blacklist Chống trùng lặp chéo giữa các đề:**
+  - Điều chỉnh tỷ lệ lấy từ Trắc nghiệm mẫu / Test Bank về mức **20% – 30%** (ưu tiên các câu chưa từng xuất hiện ở các đề trước) và dành **70% – 80%** thiết kế câu hỏi mới từ Giáo trình, Bài giảng chi tiết (`Chương *.docx`) và các phần kiến thức chuyên sâu trong Slide.
+  - Khi tạo đề mới, bắt buộc quét danh sách thân câu hỏi (`Câu X:`) của các đề trước trong `Azota/` để lập **Blacklist chống trùng lặp chéo** (nhưng tuyệt đối không học lại phương án hay lời giải từ `Azota/` để chống *Model Autophagy*).
+- **Chống Bơm chữ tạo "Phương án Người rơm" (Anti-Strawman Padding):**
+  - Bổ sung quy tắc giới hạn độ dài phương án chuẩn đề thi đại học ($10 - 20$ từ, cảnh báo ở Tầng 2 khi trung bình $> 24$ từ) nhằm ngăn chặn AI bơm chữ bịa đặt vô lý vào 3 phương án sai để đuổi theo độ dài của đáp án đúng.
+
 ## [4.4.0] - 2026-11-07
 ### Added
 - **Thắt chặt Quy tắc Tư duy Ngữ nghĩa ở Tầng AI (`SKILL.md` & `AGENTS.md`) — Cấm Phương án Tự giải nghĩa quá đà:**

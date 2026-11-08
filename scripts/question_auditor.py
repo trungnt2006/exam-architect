@@ -60,7 +60,20 @@ class QuestionAuditor:
         ans = q.get('ans', '').upper()
         opts = q.get('options', {})
         expl = q.get('explanation', '')
-        stem = q.get('stem', '')
+        stem = q.get('question', '') or q.get('stem', '')
+
+        # Kiểm tra cấm chèn trích dẫn vị trí kiến thức trong thân câu hỏi hoặc phương án
+        loc_citation_re = re.compile(
+            r'(\bSlide\s+Chương\b|\bTài\s+liệu\s+Chương\b|\bBài\s+giảng\s+Chương\b'
+            r'|\bNgân\s+hàng\s+câu\s+hỏi\b|\btrang\s+\d+|\b(?<!danh\s)mục\s+\d+\.\d+|\bcâu\s+hỏi\s+\d+)',
+            re.IGNORECASE
+        )
+        m_loc = loc_citation_re.search(stem)
+        if m_loc:
+            errors.append(
+                f"Câu {idx}: Vi phạm quy tắc trình bày đề thi! Không được chèn trích dẫn vị trí kiến thức "
+                f"('{m_loc.group(0)}') vào trong thân câu hỏi (chỉ đặt trong Lời giải & Metadata)."
+            )
         
         # --- TẦNG 1: LỖI KỸ THUẬT & LỘ BÀI ĐỘC TÔN KHÁCH QUAN 100% (HARD ERRORS) ---
         if ans not in ['A', 'B', 'C', 'D']:
@@ -139,26 +152,50 @@ class QuestionAuditor:
             )
 
         if opt_lens and not is_num:
-            # 2. Hệ số biến thiên độ dài (CV - Coefficient of Variation)
+            # 2. Hệ số biến thiên độ dài (CV - Coefficient of Variation) — Chỉ cảnh báo khi độ dài trung bình >= 45 ký tự
+            # (Tránh bắt ép AI phải "bơm chữ" vào các phương án ngắn 2-7 từ chuẩn đề thi đại học)
             mean_len = sum(opt_lens) / len(opt_lens)
             variance = sum((l - mean_len) ** 2 for l in opt_lens) / len(opt_lens)
             std_dev = math.sqrt(variance)
             cv = std_dev / mean_len if mean_len > 0 else 0
             
-            if cv > 0.30:
-                warnings.append(f"Câu {idx}: Độ lệch độ dài phương án hơi cao (CV = {cv:.2f} > 0.30). AI hãy rà soát xem có cần cân bằng lại số chữ không.")
+            if mean_len >= 45 and cv > 0.30:
+                warnings.append(f"Câu {idx}: Độ lệch độ dài phương án hơi cao (CV = {cv:.2f} > 0.30). AI hãy rút gọn phương án dài thay vì bơm chữ vào phương án ngắn.")
 
-            # 3. Cảnh báo nhẹ nếu đáp án đúng dài hơn 1.6x
-            if ans in opts:
+            # 2b. Cảnh báo "Bơm văn" (Verbosity Warning) khi trung bình phương án dài quá 24 từ
+            opt_word_counts = [len(v.strip().split()) for v in opts.values() if v.strip()]
+            mean_words = sum(opt_word_counts) / len(opt_word_counts) if opt_word_counts else 0
+            if mean_words > 24:
+                warnings.append(
+                    f"Câu {idx}: [Cảnh báo Độ dài / Bơm văn] Trung bình mỗi phương án dài {mean_words:.1f} từ (> 24 từ). "
+                    f"Hãy cô đọng các phương án về mức 10–20 từ chuẩn đề thi đại học và kiểm tra xem 3 câu sai có bị bơm thành 'Phương án người rơm (Strawman)' không."
+                )
+
+            # 3. Cảnh báo nhẹ nếu đáp án đúng dài hơn 1.6x (với câu có độ dài trung bình >= 35 ký tự)
+            if ans in opts and mean_len >= 35:
                 ans_len = len(opts[ans].strip())
                 other_lens = [len(v.strip()) for k, v in opts.items() if k != ans and v.strip()]
                 if other_lens and max(other_lens) * 1.6 < ans_len <= max(other_lens) * 2.0:
-                    warnings.append(f"Câu {idx}: Đáp án đúng {ans} hơi dài hơn các câu sai ({ans_len} vs max {max(other_lens)} ký tự).")
+                    warnings.append(f"Câu {idx}: Đáp án đúng {ans} hơi dài hơn các câu sai ({ans_len} vs max {max(other_lens)} ký tự). Hãy rút gọn đáp án đúng.")
 
-            # 4. Tính song hành cú pháp quy trình
+            # 4. Tính song hành cú pháp quy trình & Chống lộ bước đầu tiên ở Format 3
             has_arrows = [k for k, v in opts.items() if '->' in v or '→' in v]
             if 0 < len(has_arrows) < 4:
                 warnings.append(f"Câu {idx}: Chỉ có {len(has_arrows)}/4 phương án có dấu mũi tên quy trình. Hãy kiểm tra tính song hành cú pháp.")
+            elif len(has_arrows) == 4 and ans in opts:
+                first_steps = {}
+                for k, v in opts.items():
+                    m_step = re.match(r'^\s*\(?(\d+|[A-Za-z])\)?\s*(?:->|→)', v.strip())
+                    if m_step:
+                        first_steps[k] = m_step.group(1)
+                if ans in first_steps and len(first_steps) == 4:
+                    ans_first = first_steps[ans]
+                    same_first_count = sum(1 for v in first_steps.values() if v == ans_first)
+                    if same_first_count == 1:
+                        warnings.append(
+                            f"Câu {idx}: [Cảnh báo Format 3] Duy nhất đáp án đúng {ans} bắt đầu bằng bước ({ans_first}). "
+                            f"Nên để ít nhất 2 phương án có cùng bước mở đầu để chống loại trừ nhanh."
+                        )
 
             # 5. Dấu hiệu đoán mò từ ngữ cực đoan
             distractor_extremes = []
@@ -170,12 +207,36 @@ class QuestionAuditor:
             if len(distractor_extremes) >= 2:
                 warnings.append(f"Câu {idx}: Nhiều phương án sai dùng từ cực đoan ({distractor_extremes}) có thể giúp thí sinh dễ loại trừ.")
 
+            # 6. Cảnh báo Bắt chữ / Trùng từ khóa độc tôn giữa Thân câu và Đáp án đúng (Clang Association Soft Check)
+            q_text = (stem or q.get('question', '')).lower()
+            if ans in opts and q_text:
+                stop_words = {
+                    'trong', 'của', 'các', 'những', 'được', 'không', 'nào', 'sau', 'đây', 'khi', 'với',
+                    'cho', 'một', 'trên', 'theo', 'hoặc', 'nhưng', 'rằng', 'việc', 'hệ', 'thống', 'dữ',
+                    'liệu', 'doanh', 'nghiệp', 'quản', 'lý', 'phân', 'tích', 'thông', 'tin', 'bằng',
+                    'cách', 'thực', 'hiện', 'giúp', 'từ', 'đến', 'tại', 'về', 'và', 'là', 'có', 'để'
+                }
+                stem_tokens = set(re.findall(r'[a-zA-ZÀ-ỹ]{4,}', q_text)) - stop_words
+                if len(stem_tokens) >= 5:
+                    overlaps = {}
+                    for k, v in opts.items():
+                        opt_tokens = set(re.findall(r'[a-zA-ZÀ-ỹ]{4,}', v.lower())) - stop_words
+                        overlaps[k] = len(stem_tokens & opt_tokens)
+                    ans_ov = overlaps.get(ans, 0)
+                    max_other_ov = max((v for k, v in overlaps.items() if k != ans), default=0)
+                    if ans_ov >= 4 and ans_ov >= max_other_ov + 3:
+                        warnings.append(
+                            f"Câu {idx}: [Cảnh báo Bắt chữ / Clang Association] Đáp án đúng {ans} trùng {ans_ov} từ khóa với thân câu hỏi "
+                            f"(trong khi các câu sai chỉ trùng tối đa {max_other_ov} từ). Hãy kiểm tra xem có bị lộ đáp án qua từ khóa lặp lại không."
+                        )
+
         return errors, warnings
 
     def audit_exam(self, questions):
         all_errors = []
         all_warnings = []
         ans_dist = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
+        all_statements_correct_qs = []
         
         for idx, q in enumerate(questions, 1):
             errs, warns = self.audit_question(q, idx)
@@ -184,6 +245,16 @@ class QuestionAuditor:
             ans = q.get('ans', '').upper()
             if ans in ans_dist:
                 ans_dist[ans] += 1
+            opts = q.get('options', {})
+            ans_text = opts.get(ans, '').lower()
+            if re.search(r'cả\s*\(i\)\s*,\s*\(ii\)\s*và\s*\(iii\)', ans_text) or re.search(r'cả\s*3\s*(mệnh đề|nhận định|phát biểu)', ans_text):
+                all_statements_correct_qs.append(idx)
+                
+        if len(all_statements_correct_qs) > 1:
+            all_warnings.append(
+                f"[Cảnh báo Format 1B] Có {len(all_statements_correct_qs)} câu tổ hợp mệnh đề (Câu {all_statements_correct_qs}) cùng lấy 'Cả (i), (ii) và (iii)' làm đáp án đúng. "
+                f"Chỉ nên giữ tối đa 1 câu là tất cả đều đúng, các câu còn lại nên cài 1 mệnh đề sai tinh vi để chống mẹo khoanh tất cả."
+            )
                 
         total = len(questions)
         dist_report = {}

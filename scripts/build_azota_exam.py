@@ -26,6 +26,103 @@ def clean_text(s):
 
 NEGATION_TERMS = ("KHÔNG", "NGOẠI TRỪ", "SAI")
 
+def safe_swap_option_labels_in_explanation(expl, mapping):
+    """
+    Cập nhật nhãn phương án A/B/C/D trong Lời giải khi hoán vị phương án
+    mà TUYỆT ĐỐI KHÔNG làm hỏng mạo từ tiếng Anh 'A' (như 'A hyperplane', 'A clear business need').
+    mapping: dict ánh xạ từ nhãn cũ sang nhãn mới, ví dụ {'A': 'B', 'B': 'A', 'C': 'C', 'D': 'D'}.
+    """
+    if not expl or all(k == v for k, v in mapping.items()):
+        return expl
+
+    # Chỉ thay thế khi A/B/C/D đứng trong ngữ cảnh chỉ phương án trắc nghiệm rõ ràng
+    contextual_pattern = re.compile(
+        r'(\b(?:Chọn|Phương án|phương án|Đáp án|đáp án|Câu|câu)\s+)([A-D])(\b)'
+        r'|(\+\s*)([A-D])(\s*\((?:Đúng|Sai)\)\s*:)'
+        r'|(-\s*Phương án\s+)([A-D])(\s*(?:\((?:Đúng|Sai)\))?\s*:)'
+        r'|(\()([A-D])(\)\s*(?:sai|đúng|bị loại|thất bại|là\b))'
+    )
+
+    def _repl(m):
+        if m.group(2):
+            return f"{m.group(1)}{mapping.get(m.group(2), m.group(2))}{m.group(3)}"
+        if m.group(5):
+            return f"{m.group(4)}{mapping.get(m.group(5), m.group(5))}{m.group(6)}"
+        if m.group(8):
+            return f"{m.group(7)}{mapping.get(m.group(8), m.group(8))}{m.group(9)}"
+        if m.group(11):
+            return f"{m.group(10)}{mapping.get(m.group(11), m.group(11))}{m.group(12)}"
+        return m.group(0)
+
+    return contextual_pattern.sub(_repl, expl)
+
+
+def safe_permute_question_options(item, new_order):
+    """
+    Hoán vị thứ tự phương án của 1 câu hỏi theo new_order (danh sách 4 chữ cái cũ ứng với vị trí A, B, C, D mới).
+    Ví dụ new_order = ['B', 'A', 'C', 'D'] nghĩa là phương án B cũ sẽ lên vị trí A mới.
+    """
+    labels = ['A', 'B', 'C', 'D']
+    old_opts = item.get('options', {})
+    if len(old_opts) != 4 or set(new_order) != set(labels):
+        return item
+
+    old_to_new = {old_lbl: labels[new_idx] for new_idx, old_lbl in enumerate(new_order)}
+    new_opts = {labels[new_idx]: old_opts[old_lbl] for new_idx, old_lbl in enumerate(new_order)}
+    old_ans = item.get('ans', 'A').upper()
+    new_ans = old_to_new.get(old_ans, old_ans)
+
+    updated = dict(item)
+    updated['options'] = new_opts
+    updated['ans'] = new_ans
+    if 'explanation' in updated and updated['explanation']:
+        updated['explanation'] = safe_swap_option_labels_in_explanation(updated['explanation'], old_to_new)
+    return updated
+
+
+def safe_balance_and_shuffle_exam(items, shuffle_questions=False, balance_answers=False, seed=42):
+    """
+    Tùy chọn trộn ngẫu nhiên thứ tự câu hỏi giữa các chương (giống đề thi thật)
+    và cân bằng phân bố đáp án A/B/C/D (~25%) không tạo chuỗi lặp >= 3 câu liên tiếp.
+    """
+    rng = random.Random(seed)
+    work_items = [dict(it) for it in items]
+
+    if shuffle_questions:
+        rng.shuffle(work_items)
+
+    if balance_answers and len(work_items) >= 4:
+        labels = ['A', 'B', 'C', 'D']
+        n = len(work_items)
+        base = n // 4
+        rem = n % 4
+        target_pool = []
+        for idx_l, lbl in enumerate(labels):
+            target_pool.extend([lbl] * (base + (1 if idx_l < rem else 0)))
+
+        # Xáo trộn target_pool sao cho không có >= 3 đáp án liên tiếp trùng nhau
+        for _ in range(500):
+            rng.shuffle(target_pool)
+            has_streak = any(
+                target_pool[i] == target_pool[i - 1] == target_pool[i - 2]
+                for i in range(2, len(target_pool))
+            )
+            if not has_streak:
+                break
+
+        for idx, it in enumerate(work_items):
+            cur_ans = it.get('ans', 'A').upper()
+            desired_ans = target_pool[idx]
+            if cur_ans != desired_ans:
+                # Chỉ đổi chỗ cur_ans và desired_ans
+                new_order = list(labels)
+                i_cur = labels.index(cur_ans)
+                i_des = labels.index(desired_ans)
+                new_order[i_cur], new_order[i_des] = new_order[i_des], new_order[i_cur]
+                work_items[idx] = safe_permute_question_options(it, new_order)
+
+    return work_items
+
 def add_rich_text(paragraph, text, base_bold=False):
     """Thêm text vào paragraph, tự động in đậm các từ khóa phủ định theo quy tắc HUB."""
     if not text:
@@ -126,10 +223,17 @@ def export_mock_exam_for_students(items, subject_title, duration_minutes, output
     doc.save(output_path)
     print(f"[Mode A] Saved Student Mock Exam: {os.path.basename(output_path)}")
 
-def export_azota_package(items, subject_title, output_path, subtitle=""):
+def export_azota_package(items, subject_title, output_path, subtitle="", shuffle_questions=False, balance_answers=False, seed=42):
     """
     MODE C: Azota 1-Click Package (.docx with underlined correct answer, explanations & metadata).
     """
+    if shuffle_questions or balance_answers:
+        items = safe_balance_and_shuffle_exam(
+            items,
+            shuffle_questions=shuffle_questions,
+            balance_answers=balance_answers,
+            seed=seed
+        )
     doc = docx.Document()
     for sec in doc.sections:
         sec.top_margin = Inches(0.8)

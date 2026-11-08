@@ -1,4 +1,4 @@
-# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM (EXAM ARCHITECT v4.4)
+# BỘ QUY TẮC THIẾT KẾ VÀ KIỂM ĐỊNH ĐỀ THI TRẮC NGHIỆM (EXAM ARCHITECT v4.5)
 
 **Tên hệ thống:** Exam Architect  
 **Kho mã nguồn:** https://github.com/trungnt2006/exam-architect.git  
@@ -13,10 +13,11 @@ Khi người dùng đưa ra các lệnh ngắn gọn, Agent tự động thực 
 
 1. **LỆNH TẠO ĐỀ:**
    👉 `"tạo đề [số câu] câu chương [X] môn này"` (hoặc `"làm đề thi thử 40 câu môn này"`)
-   - **BƯỚC 0 BẮT BUỘC:** Quét đệ quy toàn bộ thư mục môn học, đặc biệt tìm các thư mục con `TN/`, `Trac_nghiem/`, `TestBank/`, `Giáo trình/`, `Slide/`.
-   - **CÁCH LY CHỐNG LÂY NHIỄM AI SLOP:** Mọi file đề thi Word Azota hoàn chỉnh **BẮT BUỘC LƯU VÀO FOLDER `Azota/`**. Khi quét tài nguyên để làm đề, **TUYỆT ĐỐI KHÔNG ĐƯỢC QUÉT VÀ LOẠI TRỪ 100% THƯ MỤC `Azota/`**.
-   - **RÀNG BUỘC CHIA ĐỢT (MANDATORY BATCHING - MAX 25 CÂU/LẦN):** Khi người dùng yêu cầu 40-50 câu, BẮT BUỘC chia làm 2 đợt (Đợt 1: 1-25; Đợt 2: 26-50...).
-   - **RÀNG BUỘN NGUỒN PHÔI THỰC CHIẾN:** Nếu phát hiện có file Trắc nghiệm mẫu / Test Bank, **BẮT BUỘC lấy 50% – 60% câu hỏi cốt lõi từ kho trắc nghiệm mẫu này làm khung**. Tuyệt đối CẤM hành vi lười biếng chỉ mở mỗi Slide dò từng trang đặt câu hỏi làm lệch 100% đề thi vào các số liệu vụn vặt của slide.
+   - **BƯỚC 0 BẮT BUỘC:** Quét đệ quy toàn bộ thư mục môn học, đặc biệt tìm các thư mục con `TN/`, `Trac_nghiem/`, `TestBank/`, `Giáo trình/`, `Slide/`, `Chương *.docx`.
+   - **CÁCH LY CHỐNG LÂY NHIỄM AI SLOP & CƠ CHẾ BLACKLIST CHỐNG TRÙNG LẶP ĐỀ:** Mọi file đề thi Word Azota hoàn chỉnh **BẮT BUỘC LƯU VÀO FOLDER `Azota/`**. Khi làm đề mới, **TUYỆT ĐỐI KHÔNG ĐƯỢC HỌC LẠI PHƯƠNG ÁN HAY LỜI GIẢI TỪ THƯ MỤC `Azota/`** (để chống Model Autophagy), nhưng **BẮT BUỘC quét danh sách thân câu hỏi (`Câu X:`) của các đề trước trong `Azota/` để lập Blacklist cấm trùng lặp**.
+   - **RÀNG BUỘC CHIA ĐỢT (MANDATORY BATCHING - MAX 25 CÂU/LẦN):** Khi người dùng yêu cầu 40-50 câu, BẮT BUỘC chia làm 2 đợt (Đợt 1: 1-20/25; Đợt 2: 21/26-40/50...).
+   - **TỶ LỆ KHAI THÁC TRẮC NGHIỆM MẪU / TEST BANK (20% – 30%):** Chỉ lấy **20% – 30%** câu hỏi từ file trắc nghiệm mẫu (ưu tiên các câu chưa từng xuất hiện trong Blacklist các đề trước) làm phôi thực chiến; dành **70% – 80%** thiết kế câu hỏi mới chuyên sâu từ Giáo trình, Bài giảng chi tiết (`Chương *.docx`) và các phần kiến thức sâu trong Slide. Tuyệt đối CẤM hành vi lười biếng chỉ mở mỗi Slide dò từng trang đầu đặt câu hỏi quen thuộc.
+   - **QUY TẮC CẤM TRÍCH DẪN VỊ TRÍ KIẾN THỨC TRONG THÂN CÂU HỎI:** Tuyệt đối **KHÔNG ĐƯỢC** đưa các cụm chỉ vị trí tài liệu như `(Slide Chương X, trang Y)`, `(Tài liệu Chương X, mục Y)`, `(Ngân hàng câu hỏi - Câu Z)` vào trong thân câu hỏi (`question` / `stem`) hoặc phương án lựa chọn (`A, B, C, D`). Toàn bộ thông tin nguồn trích dẫn chỉ được phép đặt trong phần **Lời giải chi tiết** và **Metadata** cuối câu.
    - Dùng Giáo trình chính để kiểm chứng (Fact-check) và sửa lại các câu bị khoanh sai trên mạng; dùng Slide để đồng bộ thuật ngữ chấm thi của trường.
    - Tự phân rã chủ đề con (Sub-topics) và chia hạn ngạch (tối đa 25%/chủ đề).
    - Tự chia ma trận Bloom chuẩn đại học (~30% Nhận biết, ~40% Thông hiểu, ~30% Vận dụng).

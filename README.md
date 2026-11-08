@@ -1,8 +1,8 @@
-# 🏛️ EXAM ARCHITECT (v4.4)
+# 🏛️ EXAM ARCHITECT (v4.5)
 > **AI-Powered Academic Exam Authoring, Auditing & 1-Click Azota Packaging Engine**
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-exam--architect-blue?logo=github)](https://github.com/trungnt2006/exam-architect.git)
-[![Version](https://img.shields.io/badge/version-4.4.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.5.0-green.svg)](CHANGELOG.md)
 [![Standard](https://img.shields.io/badge/Academic%20Style-Pearson%20%7C%20HUB-orange.svg)](#phong-cách-ra-đề-học-hỏi-từ-test-bank-quốc-tế)
 
 **Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phong cách ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tích hợp 4 format câu hỏi chuyên sâu, thuật toán phân rã chủ đề con chống trùng lặp kiến thức, kiểm định chống tự giải nghĩa lộ bài và xuất file Word chuẩn **Azota 1-Click**.

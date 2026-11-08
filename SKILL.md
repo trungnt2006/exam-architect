@@ -1,15 +1,15 @@
 ---
 name: exam-architect
-description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm học thuật (Exam Architect v4.4). Tập trung chuyên sâu vào quy trình ra đề đại học: áp dụng 4 format câu hỏi chuyên sâu (Ghép mệnh đề, Tình huống nghiệp vụ, Thứ tự quy trình, Tính toán vi mô), phân rã chủ đề con & chống trùng lặp khái niệm, học hỏi nguyên tắc Sibling Concepts từ Test Bank quốc tế, tách biệt rạch ròi Thuật ngữ & Định nghĩa ở tầng tư duy AI (chống phương án tự giải nghĩa làm lộ đáp án), kiểm định 2 tầng linh hoạt và xuất file Word Azota 1-Click.
+description: Chuyên gia thiết kế, tạo và kiểm định đề thi trắc nghiệm học thuật (Exam Architect v4.5). Tập trung chuyên sâu vào quy trình ra đề đại học: áp dụng 4 format câu hỏi chuyên sâu (Ghép mệnh đề, Tình huống nghiệp vụ, Thứ tự quy trình, Tính toán vi mô), phân rã chủ đề con & chống trùng lặp khái niệm, học hỏi nguyên tắc Sibling Concepts từ Test Bank quốc tế, tách biệt rạch ròi Thuật ngữ & Định nghĩa ở tầng tư duy AI (chống phương án tự giải nghĩa và chống bơm chữ tạo phương án người rơm), kiểm định 2 tầng linh hoạt, hoán vị an toàn và xuất file Word Azota 1-Click.
 metadata:
-  version: "4.4.0"
+  version: "4.5.0"
   architecture: "Academic-TestBank-Engine"
   author: "Exam Architect Team / Trung Ngo"
   repository: "https://github.com/trungnt2006/exam-architect.git"
   institution: "Banking University of Ho Chi Minh City (HUB) & Academic Standards"
 ---
 
-# EXAM ARCHITECT (PHIÊN BẢN 4.4 - HỆ THỐNG THIẾT KẾ & KIỂM ĐỊNH ĐỀ THI HỌC THUẬT)
+# EXAM ARCHITECT (PHIÊN BẢN 4.5 - HỆ THỐNG THIẾT KẾ & KIỂM ĐỊNH ĐỀ THI HỌC THUẬT)
 
 **Exam Architect** là hệ thống AI Agent chuyên nghiệp tập trung 100% vào **thiết kế, biên soạn và chuẩn hóa đề thi trắc nghiệm đại học**. Hệ thống học hỏi phương pháp ra đề kinh điển từ các bộ Test Bank quốc tế (Pearson, McGraw-Hill, Wiley...), tối ưu hóa tư duy phân hóa qua 4 format câu hỏi chuyên sâu, bảo đảm độ phủ kiến thức không trùng lặp và đóng gói 1-Click đưa thẳng lên nền tảng **Azota**.
 
@@ -21,7 +21,7 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 
 | Lệnh người dùng | Ví dụ mẫu | Tác vụ Agent tự động thực hiện |
 | :--- | :--- | :--- |
-| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | **BƯỚC 0 BẮT BUỘC:** Quét đệ quy thư mục môn học (`TN/`, `Giáo trình/`, `Slide/`).<br/>- **CÁCH LY CHỐNG LÂY NHIỄM AI SLOP:** Mọi file đề thi Word Azota hoàn chỉnh **BẮT BUỘC LƯU VÀO FOLDER `Azota/`**. Khi quét tài nguyên để làm đề, **TUYỆT ĐỐI KHÔNG ĐƯỢC QUÉT VÀ LOẠI TRỪ 100% THƯ MỤC `Azota/`** để chống hiện tượng AI tự học lại sản phẩm của chính mình (Model Autophagy / AI Inbreeding).<br/>- **RÀNG BUỘC CHIA ĐỢT (MANDATORY BATCHING - MAX 25 CÂU/LẦN):** Khi người dùng yêu cầu 40-50 câu, BẮT BUỘC chia làm 2 đợt (Đợt 1: 1-25; Đợt 2: 26-50...). CẤM TUYỆT ĐỐI dump cả 50 câu trong một lượt khiến token suy luận cạn kiệt sinh ra phương án ngớ ngẩn.<br/>- **Nếu có file Trắc nghiệm mẫu / Test Bank:** BẮT BUỘC lấy 50% – 60% câu hỏi làm phôi thực chiến; dùng Giáo trình để sửa đáp án sai (fact-check) và dùng Slide để đồng bộ thuật ngữ.<br/>- **Tuyệt đối cấm:** Lười biếng chỉ mở mỗi Slide dò từng trang đặt câu hỏi làm lệch 100% đề vào slide.<br/>- Tự chia ma trận Bloom, 4 format & 10 Quy tắc Vàng (Sibling Concepts), **thực thi Giao thức Tự Thẩm Định Ngữ Nghĩa AI (chống giải thích quá đà trong phương án)** và chạy `question_auditor.py` trước khi xuất duy nhất 1 file Word Azota 1-Click. |
+| **1. Tạo đề tự hành** | `tạo đề 50 câu chương 1 môn này`<br/>`làm đề thi thử 40 câu môn này` | **BƯỚC 0 BẮT BUỘC:** Quét đệ quy thư mục môn học (`TN/`, `Giáo trình/`, `Slide/`, `Chương *.docx`).<br/>- **CÁCH LY CHỐNG LÂY NHIỄM AI SLOP & CƠ CHẾ BLACKLIST CHỐNG TRÙNG LẶP ĐỀ:** Mọi file đề thi Word Azota hoàn chỉnh **BẮT BUỘC LƯU VÀO FOLDER `Azota/`**. Khi làm đề mới, **TUYỆT ĐỐI KHÔNG ĐƯỢC HỌC LẠI PHƯƠNG ÁN HAY LỜI GIẢI TỪ THƯ MỤC `Azota/`** (để chống Model Autophagy / AI Inbreeding), nhưng **BẮT BUỘC quét danh sách thân câu hỏi (`Câu X:`) của các đề trước trong `Azota/` để lập Blacklist cấm trùng lặp** (đảm bảo đề mới không lặp lại các câu hỏi/bài toán đã ra ở các đề trước).<br/>- **RÀNG BUỘC CHIA ĐỢT (MANDATORY BATCHING - MAX 25 CÂU/LẦN):** Khi người dùng yêu cầu 40-50 câu, BẮT BUỘC chia làm 2 đợt (Đợt 1: 1-20/25; Đợt 2: 21/26-40/50...). CẤM TUYỆT ĐỐI dump cả 40-50 câu trong một lượt khiến token suy luận cạn kiệt sinh ra phương án ngớ ngẩn.<br/>- **Tỷ lệ khai thác Trắc nghiệm mẫu / Test Bank (20% – 30%):** Chỉ lấy **20% – 30%** câu hỏi từ file trắc nghiệm mẫu (ưu tiên các câu chưa từng xuất hiện trong Blacklist các đề trước) làm phôi thực chiến; dành **70% – 80%** thiết kế câu hỏi mới chuyên sâu từ Giáo trình, Bài giảng chi tiết (`Chương *.docx`) và các phần kiến thức sâu trong Slide; dùng Giáo trình để sửa đáp án sai (fact-check) và dùng Slide để đồng bộ thuật ngữ.<br/>- **Tuyệt đối cấm:** Lười biếng chỉ mở mỗi Slide dò từng trang đầu đặt câu hỏi quen thuộc hoặc bốc lại các câu cũ đã mòn trong `TN/`.<br/>- Tự chia ma trận Bloom, 4 format & 10 Quy tắc Vàng (Sibling Concepts), **thực thi Giao thức Tự Thẩm Định Ngữ Nghĩa AI (chống giải thích quá đà trong phương án)** và chạy `question_auditor.py` trước khi xuất duy nhất 1 file Word Azota 1-Click. |
 | **2. Học hỏi từ Test Bank** | `hấp thụ test bank [tên_file.pdf]` | Quét và phân tích Test Bank quốc tế $\rightarrow$ Trích xuất các nhóm thuật ngữ "cùng họ" (Sibling Concepts) $\rightarrow$ Cập nhật tri thức để nâng cao chất lượng câu hỏi cho các lần tạo đề sau. |
 | **3. Kiểm định đề có sẵn** | `kiểm định đề [tên_file]` | Chạy script đo lường độ dài ($Ratio \le 2.2$), chuỗi lặp $\ge 3$, phân bố A/B/C/D, kiểm tra trùng lặp thân câu, bẫy lộ bài hình thức và cảnh báo ngữ cảnh $\rightarrow$ Hiển thị Báo cáo kiểm định trực tiếp trong chat (tuyệt đối không xuất file `.txt`). |
 | **4. Tối ưu & Chuẩn hóa Azota** | `tối ưu đề [tên_file]` | Tự động cân bằng độ dài, hoán vị chia đều đáp án ~25%, thay thế phương án nhiễu ngớ ngẩn, cắt bỏ đuôi tự giải nghĩa thừa $\rightarrow$ Xuất file Word Azota 1-Click duy nhất (không tạo file Mock Exam trừ khi được yêu cầu). |
@@ -34,12 +34,15 @@ Người dùng chỉ cần đưa ra các câu lệnh ngắn gọn, Agent tự đ
 ### 1. Nguyên tắc "Phương án nhiễu cùng họ" (Sibling Concepts) & "Song hành Cú pháp" (Parallelism)
 - **Đồng nhất Hệ quy chiếu (Homogeneous Domain):** 100% phương án sai phải thuộc cùng một phạm trù chuyên môn học thuật với đáp án đúng (tài chính, ERP, luật, thuật toán...). Cấm tuyệt đối đưa các hành vi vật lý/thủ công đời thường phi học thuật (pha trà, lau bụi, đập vỡ...).
 - **Tính Song hành Cú pháp (Grammatical Parallelism):** Cả 4 phương án trong một câu BẮT BUỘC phải cùng một kiểu câu và cùng từ loại mở đầu (cùng bắt đầu bằng Động từ hành động, cùng là Cụm danh từ tên thuật ngữ, hoặc cùng là Mệnh đề giải thích). Triệt tiêu hoàn toàn lỗi phương án đúng dài ngoằng giải thích cặn kẽ còn 3 câu sai cộc lốc.
-- **4 Cơ chế tạo sai khách quan (thay vì tự bịa):**
+- **4 Cơ chế tạo sai khách quan (thay vì tự bịa hoặc tạo "Phương án người rơm - Strawman"):**
   1. *Đảo chiều quan hệ (Inversion):* Lấy nguyên lý đúng đảo ngược logic (tăng thành giảm, thuận thành nghịch).
-  2. *Đánh tráo khái niệm song sinh (Sibling Swapping):* Lấy đặc tính của Khái niệm X gán cho Khái niệm Y.
-  3. *Thiếu điều kiện ràng buộc (Missing Prerequisite):* Viết mệnh đề đúng nhưng lược bỏ điều kiện loại trừ.
+  2. *Đánh tráo khái niệm song sinh (Sibling Swapping):* Lấy đặc tính/cơ chế có thật của Khái niệm X trong cùng chương gán cho Khái niệm Y.
+  3. *Thiếu điều kiện ràng buộc (Missing Prerequisite):* Viết mệnh đề đúng nhưng lược bỏ điều kiện loại trừ hoặc áp dụng sai pha/giai đoạn.
   4. *Xáo trộn trình tự (Displacement):* Tráo đổi thứ tự các bước trong quy trình chuẩn.
-- **Triệt tiêu bẫy bắt chữ / Lộ nghĩa đen (Anti-Clang Association):** Thân câu hỏi không dùng các từ ngữ đời thường để mớm nghĩa đen cho đáp án (ví dụ: thân câu dùng chữ *"mua cùng nhau"*, phương án ghi *"giỏ hàng"*). Thân câu phải được nâng cấp lên thuật ngữ học thuật (ví dụ: *"mối quan hệ đồng xuất hiện (co-occurrence) giữa các danh mục sản phẩm"*).
+- **Chống Phương án Nhiễu "Người rơm" (Anti-Strawman Distractors) & Chống Bơm chữ (Concise Academic Style):**
+  - **Cấm bơm văn để cân bằng độ dài:** Độ dài lý tưởng của phương án trong đề thi đại học là **2–8 từ** (Khuôn mẫu 1 - Nhận diện thuật ngữ) hoặc **10–22 từ** (Khuôn mẫu 2 & Format 2 - Phân tích cơ chế/tình huống). Khi phương án đúng bị dài (> 22 từ), AI **BẮT BUỘC phải biên tập rút gọn phương án đúng cho sắc bén**, tuyệt đối không giữ phương án đúng dài lê thê rồi "bơm chữ" phóng đại vào 3 phương án sai.
+  - **Cấm bịa hành vi tiêu cực phi lý (Strawman):** Ở Khuôn mẫu 2 & Format 2, cả 3 phương án nhiễu phải là các cơ chế/giải pháp kỹ thuật hoặc quản trị có thật (nhưng áp dụng cho bài toán khác hoặc khái niệm anh em khác), tuyệt đối không bịa ra những hành động vô lý về mặt nghiệp vụ (như *"đình chỉ hệ thống 2 năm"*, *"xóa bỏ hoàn toàn dữ liệu lịch sử"*, *"mua 10.000 máy chủ"*, *"không cần nhu cầu kinh doanh vẫn tự sinh lợi nhuận"*) khiến sinh viên không cần học cũng loại trừ được.
+- **Triệt tiêu bẫy bắt chữ / Lộ nghĩa đen (Anti-Clang Association):** Thân câu hỏi không dùng các từ ngữ đời thường hoặc từ khóa trùng khớp 1-1 duy nhất với phương án đúng (ví dụ: thân câu dùng chữ *"Tư duy nhóm"*, duy nhất phương án đúng có chữ *"nhóm (Group DSS)"*; hoặc thân câu ghi *"dữ liệu nhạy cảm"*, phương án ghi *"Sensitive Zone (Vùng nhạy cảm)"*). Phải diễn đạt thân câu bằng tình huống hoặc mô tả gián tiếp.
 - *Ví dụ minh họa từ Test Bank Pearson:* Khi hỏi về đặc tính dữ liệu *"Granularity"*, cả 3 phương án nhiễu phải là các đặc tính dữ liệu anh em cùng chương: *Data reliability*, *Data accessibility*, *Data richness*. Thí sinh đọc vào thấy tất cả đều quen thuộc, chỉ người hiểu bản chất mới chọn đúng!
 
 ---
@@ -135,16 +138,18 @@ Triệt tiêu hoàn toàn thói quen loại trừ hay đoán mò 50/50, đánh g
 - **Biến thể 1B — Tổ hợp đa mệnh đề từ 3 đến 4 phát biểu `(i), (ii), (iii), (iv)`:**
   - *Cấu trúc:* Liệt kê 3 hoặc 4 nhận định độc lập quét qua các khía cạnh khác nhau của một chủ đề lớn. Thân câu hỏi yêu cầu xác định *"Tập hợp các nhận định ĐÚNG là?"* hoặc *"Có bao nhiêu nhận định ĐÚNG?"*.
   - *4 Phương án:* Tổ hợp các mệnh đề đúng (ví dụ: `A. Chỉ (i) và (iii)`, `B. Chỉ (ii) và (iv)`, `C. (i), (ii) và (iii)`, `D. Cả (i), (ii), (iii) và (iv)`) hoặc số lượng mệnh đề đúng (`A. 1`, `B. 2`, `C. 3`, `D. 4`).
+  - *Quy tắc phân bổ đáp án (Chống mẹo khoanh tất cả):* Vẫn phải có phương án `"Cả (i), (ii) và (iii)"` xuất hiện trong các lựa chọn (và có thể là đáp án đúng ở tối đa **1 câu** trong đề để giữ tính tự nhiên), nhưng ở các câu Format 1B còn lại, **bắt buộc cài ít nhất 1 mệnh đề sai tinh vi** để đáp án đúng rơi vào các tổ hợp từng phần (`Chỉ (i) và (ii)`, `Chỉ (i) và (iii)`...).
 - **Tác dụng khảo thí:** Buộc sinh viên phải thẩm định độc lập từng mệnh đề, không thể dùng mẹo loại trừ đơn giản.
 
 ### Format 2: Tình huống Nghiệp vụ & Đánh đổi Kiến trúc (Scenario-based & Architectural Trade-offs)
-- **Cấu trúc:** Mở đầu bằng một bối cảnh doanh nghiệp/ngân hàng cụ thể (3–5 dòng) kèm theo các ràng buộc kỹ thuật hoặc kinh doanh (ngân sách, thời gian phản hồi, khối lượng dữ liệu, quy định pháp lý).
-- **Yêu cầu:** Chọn giải pháp/mô hình tối ưu nhất.
+- **Cấu trúc:** Mở đầu bằng một bối cảnh doanh nghiệp/ngân hàng cụ thể (2–4 dòng cô đọng) kèm theo các ràng buộc kỹ thuật hoặc kinh doanh (ngân sách, thời gian phản hồi, khối lượng dữ liệu, quy định pháp lý).
+- **Yêu cầu:** Chọn giải pháp/mô hình tối ưu nhất (các phương án dài 10–22 từ, sắc gọn, mỗi phương án nhiễu đại diện cho một giải pháp anh em có thật).
 - **Tác dụng khảo thí:** Kiểm tra mức độ Vận dụng & Phân tích (Bloom 3–4). Lời giải phải chỉ rõ sự đánh đổi (trade-off): tại sao phương án A tối ưu trong bối cảnh này mà phương án B lại thất bại.
 
 ### Format 3: Trình tự Quy trình & Luồng Xử lý (Process Sequencing & Lifecycle Stages)
 - **Cấu trúc:** Liệt kê 4–5 bước của một quy trình nghiệp vụ hoặc luồng dữ liệu (ví dụ: quy trình ETL, vòng đời Kimball, quy trình tín dụng, chu trình kế toán) được đánh số `(1), (2), (3), (4)...` theo thứ tự xáo trộn.
 - **Yêu cầu:** Chọn phương án sắp xếp đúng trình tự thời gian/logic thực thi (ví dụ: `A. (2) -> (4) -> (1) -> (3)`).
+- **Quy tắc chống loại trừ nhanh ở bước đầu:** Tối thiểu 2–3 phương án phải có **cùng bước mở đầu** (và nên có 2 phương án trùng cả 2 bước đầu hoặc cùng bước kết thúc) để buộc sinh viên phải phân tích thứ tự các bước trung gian.
 - **Tác dụng khảo thí:** Kiểm tra tư duy hệ thống và nắm vững luồng vận hành thực tế thay vì nhớ rời rạc từng bước.
 
 ### Format 4: Tính toán Vi mô 30 Giây (Micro-Calculation & Quantitative Traps)
@@ -208,6 +213,7 @@ Trước khi ra đề, Agent tự động phân tích đề cương/slide để 
   - **File đề thi thử không đáp án (`De_Thi_Thu_Mock_Exam_...docx`):** **CHỈ XUẤT KHI NGƯỜI DÙNG YÊU CẦU CỤ THỂ**.
   - **Đầu trang tinh gọn:** Chỉ gồm Tiêu đề bộ đề, tên môn học/chương, dòng ghi chú Azota 1-Click và đường kẻ ngang phân cách. **TUYỆT ĐỐI KHÔNG chèn bảng đặc tả đề thi to/rườm rà ở đầu trang**.
   - **Metadata trong Lời giải tinh gọn & chuyên môn:** Chỉ hiển thị `Nguồn: [Tên tài liệu/Slide], Trang [X]`, `Mức độ: [Bloom]`, `Chủ đề: [Sub-topic]`. **TUYỆT ĐỐI KHÔNG** chèn các thông tin lặp thừa như tên bộ môn/khoa (`Bộ môn KHMT - Khoa HTTTQL, HUB`) và **KHÔNG** để lộ thuật ngữ kỹ thuật của Agent (`Dạng: MCQ Sibling Concepts`, `Format 1A...`).
+  - **Cấm tuyệt đối chèn trích dẫn vị trí kiến thức vào Thân câu hỏi (`Câu X:`) hoặc Phương án (`A, B, C, D`):** Thân câu hỏi phải mang văn phong đề thi đại học tự nhiên, độc lập. **TUYỆT ĐỐI KHÔNG** ghi kèm vị trí tài liệu như `(Slide Chương 1, trang 38)`, `(Tài liệu Chương 4, mục 4.3.1)`, `(Ngân hàng câu hỏi Câu 55)` hay `(câu hỏi 241)` ở trong thân câu hỏi hoặc phương án lựa chọn. Mọi thông tin trích dẫn vị trí kiến thức chỉ được phép đặt trong phần **`Lời giải`** và **`📌 [Metadata]`**.
   - **Thuộc tính tệp Word (Core Properties):** Title, Subject, Author, Category được gán tự động trong file Word (`File` -> `Info`).
   - **Báo cáo kiểm định:** Hiển thị trực tiếp trong phản hồi chat, **TUYỆT ĐỐI KHÔNG** tự tiện tạo hay lưu các file phụ trợ trung gian (`.json`, `.md`, `.txt`) ra thư mục làm việc của người dùng.
 - **Kết thúc đề:** Dòng **`HẾT`** in đậm căn giữa. Tuyệt đối **KHÔNG** để bảng đáp án thừa ở cuối file để tránh lỗi nuốt chữ của trình soạn thảo Azota.
